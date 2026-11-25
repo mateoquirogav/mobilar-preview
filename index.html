@@ -22,6 +22,11 @@ input,button{font:inherit;font-size:16px}
 .seg button{all:unset;cursor:pointer;display:flex;align-items:center;gap:7px;padding:7px 16px;border-radius:999px;font:500 13px Inter;color:#C9D3E3}
 .seg button.on{background:#fff;color:#0F1B2E}
 .seg.pg button{padding:7px 14px}
+.xseg{display:flex;align-items:center;gap:4px;background:rgba(255,209,0,.12);border:1px solid rgba(255,209,0,.35);border-radius:999px;padding:4px 4px 4px 12px}
+.xseg span{font:700 10px Inter;letter-spacing:.14em;text-transform:uppercase;color:#FFD100;margin-right:4px}
+.xseg button{all:unset;cursor:pointer;padding:6px 12px;border-radius:999px;font:500 12.5px Inter;color:#E9E2B8}
+.xseg button:hover,.xseg button.on{background:#FFD100;color:#161616}
+.device{position:relative}
 .stage{position:fixed;inset:58px 0 0 0;display:flex;justify-content:center;align-items:flex-start;padding:22px;overflow:hidden}
 .device{width:100%;max-width:1360px;height:100%;background:#fff;border-radius:12px;box-shadow:0 30px 80px -30px rgba(0,0,0,.4);overflow:hidden;display:flex;flex-direction:column;transition:max-width .5s cubic-bezier(.2,.8,.2,1),border-radius .5s}
 .chrome{height:38px;flex:none;background:#F1F1F1;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #E2E2E2}
@@ -34,6 +39,9 @@ input,button{font:inherit;font-size:16px}
   .tool{height:52px;padding:0 12px}.tool b span{display:none}
   .stage{inset:52px 0 0 0;padding:0}.device,.device.mob{max-width:none;border-radius:0;border:0;height:100%}
   .chrome,.seg:not(.pg){display:none}
+  .tool{overflow-x:auto;gap:8px;justify-content:flex-start}.tool b{display:none}
+  .xseg{flex:none;padding-left:8px}.xseg span{display:none}.xseg button{padding:6px 9px;font-size:12px;white-space:nowrap}
+  .seg.pg{flex:none}.seg.pg button{padding:7px 10px;font-size:12px}
 }
 /* ---------- sitio ---------- */
 .site{container-type:inline-size;background:#fff}
@@ -349,6 +357,102 @@ input,button{font:inherit;font-size:16px}
 .ep-sello svg{width:20px;height:20px;color:#C9961A}
 .ep-sello .st svg{width:14px;height:14px;color:#FBBC04}
 .ep-sello small{margin-left:auto;color:var(--mu);font-size:12px}
+/* ---------- AGREGADO · descripción con código ---------- */
+.dsc{margin-top:56px;border-top:1px solid var(--ln);padding-top:30px}
+.dsc-lbl{font:600 12px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.dsc-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px;align-items:start}
+.dsc-hero{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:1;background:#111}
+.dsc-hero img{width:100%;height:100%;object-fit:cover;display:block}
+.dsc-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(22,22,22,.95) 0%,rgba(22,22,22,.55) 45%,transparent 75%)}
+.dsc-hero div{position:absolute;left:20px;right:20px;bottom:20px;z-index:2;color:#fff}
+.dsc-hero small{display:block;font:700 10.5px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:var(--y);margin-bottom:8px}
+.dsc-hero b{font:500 24px/1.15 Montserrat;letter-spacing:-.02em}
+.dsc-hero strong{font-weight:900}
+.dsc-k{font:800 11px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:var(--rd);margin:26px 0 8px}
+.dsc-c2 .dsc-k:first-child,.dsc-how .dsc-k{margin-top:0}
+.dsc-h{font:500 25px/1.15 Montserrat;letter-spacing:-.02em}
+.dsc-h strong{font-weight:900}
+.dsc-p{font-size:15px;line-height:1.65;color:#444;margin-top:10px}
+.dsc-sp{margin-top:18px;border-top:1px solid var(--ln)}
+.dsc-sp div{padding:12px 4px;border-bottom:1px solid var(--ln);font-size:15px}
+.dsc-sp small{display:block;font:800 10.5px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:#B08A00;margin-bottom:3px}
+.dsc-cd{background:#FFFBEA;border:1px solid #F3E3A0;border-radius:14px;padding:16px 18px;margin-top:12px}
+.dsc-cd b{font:800 16px Montserrat}
+.dsc-cd p{font-size:14px;line-height:1.5;color:#555;margin-top:5px}
+.dsc-tb{margin-top:18px;border:1px solid var(--ln);border-radius:16px;overflow:hidden}
+.dsc-tb .r{display:grid;grid-template-columns:1fr 74px 84px;align-items:center;border-top:1px solid var(--ln)}
+.dsc-tb .r:first-child{border-top:0}
+.dsc-tb span{padding:13px 12px;font:600 13px/1.35 Inter}
+.dsc-tb .r b{align-self:stretch;display:grid;place-items:center;background:var(--ink);color:var(--y);font-size:18px}
+.dsc-tb .r i{font-style:normal;text-align:center;color:var(--rd);font-weight:700}
+.dsc-tb .h b{font:900 12px Montserrat;color:var(--y);padding:12px 0}.dsc-tb .h i{font:700 11.5px Inter;color:var(--ink)}
+.dsc-how{background:var(--gr);border-radius:18px;padding:24px}
+.dsc-st{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--ln);margin-top:12px}
+.dsc-st em{font:500 22px Montserrat;font-style:normal;color:var(--rd)}
+.dsc-st p{font-size:14px;line-height:1.5;color:#555}.dsc-st b{display:block;font:800 15px Montserrat;color:var(--ink);margin-bottom:3px}
+.dsc-how img{width:100%;border-radius:12px;margin-top:10px;display:block}
+.dsc-cta{margin-top:18px;background:var(--ink);color:#fff;border-radius:18px;padding:26px}
+.dsc-cta small{font:700 10.5px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:var(--y)}
+.dsc-cta b{display:block;font:500 25px/1.15 Montserrat;letter-spacing:-.02em;margin-top:8px}.dsc-cta strong{font-weight:900}
+.dsc-btn{display:flex;align-items:center;justify-content:center;height:54px;border-radius:999px;background:var(--y);color:var(--ink);font:800 13px Montserrat;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;margin-top:18px}
+.dsc-cta p{font-size:13px;color:#BDBDBD;margin-top:12px;line-height:1.5}
+/* ---------- AGREGADOS · venta cruzada + carrito ---------- */
+.ov{position:absolute;inset:38px 0 0 0;z-index:30;container-type:inline-size}
+.device.mob .ov{inset:0}
+.ov-bg{position:absolute;inset:0;background:rgba(10,10,10,.55);animation:fd .25s}
+@keyframes fd{from{opacity:0}}
+@keyframes up{from{opacity:0;transform:translate(-50%,-46%)}}
+@keyframes sl{from{transform:translateX(100%)}}
+.ov-x{all:unset;cursor:pointer;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--gr);font-size:14px}
+.xm{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(560px,calc(100% - 28px));max-height:calc(100% - 28px);overflow:auto;background:#fff;border-radius:20px;padding:22px;animation:up .3s cubic-bezier(.2,.8,.2,1)}
+.xm .ov-x{position:absolute;top:14px;right:14px}
+.xm-ok{display:flex;align-items:center;gap:10px;font:800 18px Montserrat}
+.xm-ok i{width:30px;height:30px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;font-style:normal;font-size:15px}
+.xm-p{display:flex;gap:14px;align-items:center;margin-top:16px;padding:12px;border:1px solid var(--ln);border-radius:14px}
+.xm-p img{width:70px;height:70px;object-fit:contain;flex:none}
+.xm-p b{display:block;font:700 13.5px/1.3 Inter}.xm-p span{font:900 17px Montserrat}.xm-p small{display:block;color:var(--ok);font-size:12px;font-weight:600}
+.xm-k{font:800 11px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:var(--rd);margin:20px 0 10px}
+.xm-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.xc{border:1px solid var(--ln);border-radius:12px;padding:10px;display:flex;flex-direction:column}
+.xc img{width:100%;aspect-ratio:1;object-fit:contain}
+.xc b{font:600 12px/1.3 Inter;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:31px}
+.xc span{font:900 15px Montserrat;margin-top:4px}
+.xc button{all:unset;cursor:pointer;text-align:center;margin-top:8px;height:34px;border-radius:8px;background:var(--y);font:800 11.5px Montserrat}
+.xc button.ok{background:var(--ok);color:#fff}
+.xm-bt{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.xb{all:unset;cursor:pointer;box-sizing:border-box;text-align:center;height:50px;line-height:50px;border-radius:6px;background:var(--rd);color:#fff;font:600 15px Inter}
+.xb.o{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.xb.full{display:block;width:100%;margin-top:12px}
+.ct{position:absolute;top:0;right:0;bottom:0;width:min(420px,100%);background:#fff;display:flex;flex-direction:column;animation:sl .35s cubic-bezier(.2,.8,.2,1)}
+.ct-h{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--ln)}
+.ct-h b{font:800 17px Montserrat}.ct-h span{color:var(--mu);font-weight:600}
+.ct-b{flex:1;overflow:auto;padding:4px 18px 14px}
+.ci{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--ln)}
+.ci img{width:64px;height:64px;object-fit:contain;border:1px solid var(--ln);border-radius:8px}
+.ci b{font:600 12.5px/1.3 Inter;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ci small{display:block;font-size:11.5px;color:var(--ok);font-weight:600;margin-top:3px}
+.ci .q{display:flex;align-items:center;border:1px solid #CFCFCF;border-radius:6px;margin-top:6px;width:max-content}
+.ci .q button{all:unset;cursor:pointer;width:26px;height:26px;display:grid;place-items:center}
+.ci .q em{font-style:normal;min-width:16px;text-align:center;font-size:13px}
+.ci>span{font:900 14px Montserrat;white-space:nowrap}
+.ct-k{font:800 10.5px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:var(--rd);margin:16px 0 8px}
+.ct-s{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.ct-s .xc{flex:0 0 118px;padding:8px}.ct-s .xc b{font-size:11px;min-height:28px}.ct-s .xc span{font-size:13px}.ct-s .xc button{height:30px;font-size:10.5px}
+.ct-f{border-top:1px solid var(--ln);padding:14px 18px 16px;box-shadow:0 -10px 24px -16px rgba(0,0,0,.3)}
+.ct-r{display:flex;justify-content:space-between;align-items:baseline}.ct-r span{font-size:14px;color:var(--mu)}.ct-r b{font:900 22px Montserrat}
+.ct-cu,.ct-dni{display:flex;gap:8px;align-items:center;font-size:13px;margin-top:6px}
+.ct-cu{color:var(--ok);font-weight:600}.ct-dni{color:#555}
+.ct-cu svg,.ct-dni svg{width:17px;height:17px;flex:none}
+.ct-cp{display:flex;gap:6px;margin-top:10px}
+.ct-cp input{flex:1;min-width:0;height:40px;border:1px solid #CFCFCF;border-radius:6px;padding:0 10px}
+.ct-cp button{all:unset;cursor:pointer;padding:0 12px;height:40px;line-height:40px;border-radius:6px;background:var(--gr);font:600 12.5px Inter}
+.ct-lg{display:flex;gap:4px;margin-top:10px}.ct-lg img{height:20px;border-radius:3px}
+.ct-seg{all:unset;cursor:pointer;display:block;text-align:center;width:100%;margin-top:8px;font:600 13px Inter;color:var(--ink);text-decoration:underline}
+@container (max-width:560px){
+  .xm{padding:18px 16px;border-radius:16px}
+  .xm-g{grid-template-columns:repeat(3,1fr);gap:6px}.xc{padding:6px}.xc b{font-size:10.5px}.xc span{font-size:12.5px}.xc button{font-size:10px;height:30px}
+  .xb{font-size:13.5px}
+}
 /* aparición */
 .js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0)*90ms)}
 .js .rv.in{opacity:1;transform:none}
@@ -450,6 +554,10 @@ input,button{font:inherit;font-size:16px}
   .fb{flex-direction:column;gap:6px}
   /* ficha */
   .crumb{padding:14px 0 10px;font-size:11.5px}
+  .dsc{margin-top:34px;padding-top:20px}
+  .dsc-g{grid-template-columns:1fr;gap:26px}
+  .dsc-hero b{font-size:21px}.dsc-h{font-size:21px}.dsc-p{font-size:14px}
+  .dsc-tb .r{grid-template-columns:1fr 64px 76px}.dsc-tb span{font-size:12px;padding:11px 10px}
   .fx{grid-template-columns:1fr;gap:18px}
   .fx-main{position:static;padding:20px;border-radius:16px}
   .fx-info h1{font-size:21px}
@@ -484,6 +592,7 @@ input,button{font:inherit;font-size:16px}
 <div class="tool">
   <b>PRAXIS<span>Mobilar · Estructura 3 · vista previa de tu web</span></b>
   <div class="seg pg"><button data-v="home" class="on">Inicio</button><button data-v="ficha">Producto</button></div>
+  <div class="xseg"><span>Agregados</span><button data-x="cross">Venta cruzada</button><button data-x="cart">Carrito</button><button data-x="desc">Descripción</button></div>
   <div class="seg">
     <button data-m="pc" class="on"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>PC</button>
     <button data-m="mob"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>Celular</button>
@@ -693,6 +802,51 @@ input,button{font:inherit;font-size:16px}
         </div>
       </div>
     </div>
+
+    <!-- AGREGADO · Descripción con código (estilo Cellphie) -->
+    <section class="dsc" id="dsc" hidden>
+      <div class="dsc-lbl">Descripción</div>
+      <div class="dsc-g">
+        <div class="dsc-c1">
+          <div class="dsc-hero"><img src="d-hero.jpg" alt=""><div><small>Hitachi HSRP2700FCECO · Frío / Calor</small><b>Fresco en enero,<br>calentito en julio.<br><strong>Un solo equipo para todo el año.</strong></b></div></div>
+          <div class="dsc-k">Qué estás comprando</div>
+          <h3 class="dsc-h">Un split que climatiza tu ambiente <strong>los 12 meses.</strong></h3>
+          <p class="dsc-p">El Hitachi HSRP2700FCECO enfría con 2700 W y calefacciona con 2500 W, así que te sirve para el calor tucumano y para las noches frías. Unidad interior compacta, control remoto y fabricación argentina. Lo tenemos en el local: pasás, lo ves y te asesoramos según el tamaño de tu ambiente.</p>
+          <div class="dsc-sp">
+            <div><small>Capacidad en frío</small>2700 W</div>
+            <div><small>Capacidad en calor</small>2500 W</div>
+            <div><small>Función</small>Frío / Calor</div>
+            <div><small>Control remoto</small>Sí, incluido</div>
+            <div><small>Unidad interior</small>79 × 25,5 × 19,7 cm · 7,5 kg</div>
+            <div><small>Industria</small>Argentina</div>
+          </div>
+        </div>
+        <div class="dsc-c2">
+          <div class="dsc-k">Por qué comprarlo en Mobilar</div>
+          <h3 class="dsc-h">Lo que no se ve en la foto <strong>es lo que hace la diferencia.</strong></h3>
+          <div class="dsc-cd"><b>Pagalo sin pagar todo junto</b><p>6 cuotas sin interés con todas las tarjetas, o crédito personal solo con tu DNI.</p></div>
+          <div class="dsc-cd"><b>Te asesora un especialista</b><p>Te decimos qué potencia necesitás según los metros de tu ambiente, antes de comprar.</p></div>
+          <div class="dsc-cd"><b>Servicio técnico propio</b><p>Después de la compra seguimos acá: más de 40 años en Tucumán.</p></div>
+          <div class="dsc-tb"><div class="r h"><span></span><b>Mobilar</b><i>Marketplace</i></div>
+            <div class="r"><span>Asesor especialista antes de comprar</span><b>✓</b><i>✕</i></div>
+            <div class="r"><span>Retiro en 5 sucursales de Tucumán</span><b>✓</b><i>✕</i></div>
+            <div class="r"><span>Servicio técnico propio</span><b>✓</b><i>✕</i></div>
+            <div class="r"><span>Crédito personal con tu DNI</span><b>✓</b><i>✕</i></div>
+          </div>
+        </div>
+        <div class="dsc-c3">
+          <div class="dsc-how">
+            <div class="dsc-k">Cómo te llega</div>
+            <h3 class="dsc-h">Te lo llevamos <strong>o lo retirás en tu sucursal.</strong></h3>
+            <p class="dsc-p">En Gran San Miguel de Tucumán lo entregamos con flota propia. Al resto del país, con el envío que elijas.</p>
+            <div class="dsc-st"><em>01</em><p><b>Comprás y lo despachamos</b>De lunes a viernes, en 6 cuotas sin interés.</p></div>
+            <div class="dsc-st"><em>02</em><p><b>O lo retirás en el local</b>Casa central, Mendoza, Tafí Viejo, Banda del Río Salí o Bella Vista.</p></div>
+            <img src="d-local.jpg" alt="">
+          </div>
+          <div class="dsc-cta"><small>Llevátelo</small><b>Climatizá tu casa <strong>en 6 cuotas sin interés.</strong></b><a href="#ficha" class="dsc-btn">Agregar al carrito</a><p>Asesor especialista · retiro en 5 sucursales · servicio técnico propio.</p></div>
+        </div>
+      </div>
+    </section>
     <div class="head" style="margin-top:70px"><div><div class="kick">Te puede interesar</div><div class="h2">Más <em>ofertas</em></div></div></div>
     <div class="rail" id="g4" style="margin-bottom:20px"></div>
   </div>
@@ -718,6 +872,32 @@ input,button{font:inherit;font-size:16px}
   <a class="wapp" href="#mapa" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.4z"/></svg></a>
  </div>
  </div>
+ <!-- AGREGADOS · venta cruzada y carrito -->
+ <div class="ov" id="ovX" hidden><div class="ov-bg" data-close></div>
+  <div class="xm"><button class="ov-x" data-close aria-label="Cerrar">✕</button>
+   <div class="xm-ok"><i>✓</i><b>¡Agregado al carrito!</b></div>
+   <div class="xm-p" id="xmP"></div>
+   <div class="xm-k">Completá tu compra</div>
+   <div class="xm-g" id="xmG"></div>
+   <div class="xm-bt"><button class="xb o" data-close>Seguir comprando</button><button class="xb" data-cart>Ir al carrito</button></div>
+  </div></div>
+ <div class="ov" id="ovC" hidden><div class="ov-bg" data-close></div>
+  <aside class="ct"><div class="ct-h"><b>Tu carrito <span id="ctN"></span></b><button class="ov-x" data-close aria-label="Cerrar">✕</button></div>
+   <div class="ct-b">
+    <div id="ctI"></div>
+    <div class="ct-k">Sumá a tu compra</div>
+    <div class="ct-s" id="ctS"></div>
+   </div>
+   <div class="ct-f">
+    <div class="ct-r"><span>Subtotal</span><b id="ctT"></b></div>
+    <div class="ct-cu"><svg><use href="#card"/></svg><span>En <strong id="ctC"></strong></span></div>
+    <div class="ct-dni"><svg><use href="#id"/></svg>¿Sin tarjeta? Crédito personal con tu DNI</div>
+    <label class="ct-cp"><input type="text" inputmode="numeric" placeholder="Tu código postal"><button type="button">Calcular envío</button></label>
+    <div class="ct-lg"><img src="mp1.png" alt=""><img src="mp2.png" alt=""><img src="mp0.png" alt=""><img src="mp3.png" alt=""><img src="mp4.png" alt=""></div>
+    <button class="xb full">Iniciar compra</button>
+    <button class="ct-seg" data-close>Seguir comprando</button>
+   </div>
+  </aside></div>
 </div>
 </div>
 <script>
@@ -791,12 +971,13 @@ document.addEventListener('click',e=>{const b=e.target.closest('.snd');if(!b)ret
 const callar=()=>vids.forEach(v=>{v.pause();v.muted=true;v.parentElement.querySelector('.snd').classList.remove('u')});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)callar()});addEventListener('pagehide',callar);
 // ficha
-function abrir(i){const p=P[i]||P[0];
+let FX=9;
+function abrir(i){const p=P[i]||P[0];FX=P[i]?i:0;$('dsc').hidden=FX!==13;
   $('fxName').textContent=$('fxName2').textContent=p[1];$('fxImg').src=p[0]+'.jpg';
   $('fxOld').textContent=p[3]?'$ '+p[3]:'';$('fxOff').textContent=p[4]?p[4]+'% OFF':'';
   $('fxPr').textContent='$ '+p[2];
   $('fxCuV').textContent='$ '+p[5]+' por mes';$('fxCu').textContent='En 6 cuotas sin interés con todas las tarjetas';}
-function vista(v,i){const f=v==='ficha';$('home').hidden=f;$('ficha').hidden=!f;if(f)callar();
+function vista(v,i){cerrarOv();const f=v==='ficha';$('home').hidden=f;$('ficha').hidden=!f;if(f)callar();
   document.querySelectorAll('.seg.pg button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
   if(f)abrir(i??9);
   document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
@@ -813,7 +994,39 @@ document.addEventListener('click',e=>{
 document.querySelectorAll('.seg.pg button').forEach(b=>b.addEventListener('click',()=>vista(b.dataset.v)));
 const dev=$('device');
 document.querySelectorAll('.seg:not(.pg) button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.seg:not(.pg) button').forEach(x=>x.classList.toggle('on',x===b));dev.classList.toggle('mob',b.dataset.m==='mob');$('screen').scrollTop=0}));
+
+// ===== AGREGADOS (vista previa): venta cruzada, carrito y descripción con código =====
+let CART=[];
+const CLIM=[13,14,10,15,16,17,18,5];
+const compl=i=>CLIM.includes(i)?[16,18,5].filter(k=>k!==i):[28,29,46].filter(k=>k!==i);
+const num=x=>+String(x).replace(/\./g,'');
+const fmt=n=>'$ '+Math.round(n).toLocaleString('es-AR');
+const mini=k=>`<div class="xc"><img src="${P[k][0]}.jpg" alt=""><b>${P[k][1]}</b><span>$ ${P[k][2]}</span><button type="button" data-add="${k}">+ Agregar</button></div>`;
+function abrirOv(id){['ovX','ovC'].forEach(x=>$(x).hidden=x!==id);callar()}
+function cerrarOv(){$('ovX').hidden=$('ovC').hidden=true;document.querySelectorAll('.xseg button').forEach(b=>b.classList.remove('on'))}
+function agregar(i,show){const it=CART.find(c=>c.i===i);if(it)it.q++;else CART.push({i,q:1});pintar();
+  if(show){const p=P[i];$('xmP').innerHTML=`<img src="${p[0]}.jpg" alt=""><div><b>${p[1]}</b><span>$ ${p[2]}</span><small>6 cuotas sin interés de $ ${p[5]}</small></div>`;$('xmG').innerHTML=compl(i).slice(0,3).map(mini).join('');abrirOv('ovX')}}
+function pintar(){let t=0,n=0;$('ctI').innerHTML=CART.map(c=>{const p=P[c.i];t+=num(p[2])*c.q;n+=c.q;return `<div class="ci"><img src="${p[0]}.jpg" alt=""><div><b>${p[1]}</b><small>6 x $ ${p[5]} sin interés</small><div class="q"><button type="button" data-cq="${c.i}" data-dq="-1">−</button><em>${c.q}</em><button type="button" data-cq="${c.i}" data-dq="1">+</button></div></div><span>${fmt(num(p[2])*c.q)}</span></div>`}).join('');
+  $('ctN').textContent='('+n+')';$('ctT').textContent=fmt(t);$('ctC').textContent='6 cuotas sin interés de '+fmt(t/6);
+  const ya=CART.map(c=>c.i);$('ctS').innerHTML=[...new Set([...CART.flatMap(c=>compl(c.i)),28,46,42])].filter(k=>!ya.includes(k)).slice(0,5).map(mini).join('');
+  document.querySelector('.cart b').textContent=n}
+function verCarrito(){if(!CART.length){agregar(13,false);agregar(16,false)}abrirOv('ovC')}
+function verDesc(){vista('ficha',13);setTimeout(()=>{const d=$('dsc');$('screen').scrollTo({top:d.offsetTop-170,behavior:'smooth'})},120)}
+document.addEventListener('click',e=>{
+  if(e.target.closest('.tn-add')){e.preventDefault();agregar(FX,true);return}
+  if(e.target.closest('.dsc-btn')){e.preventDefault();agregar(13,true);return}
+  const a=e.target.closest('[data-add]');if(a){a.classList.add('ok');a.textContent='✓ Agregado';agregar(+a.dataset.add,false);return}
+  const q=e.target.closest('[data-cq]');if(q){const c=CART.find(x=>x.i===+q.dataset.cq);c.q+= +q.dataset.dq;if(c.q<1)CART=CART.filter(x=>x!==c);pintar();return}
+  if(e.target.closest('[data-cart]')){abrirOv('ovC');return}
+  if(e.target.closest('[data-close]')){cerrarOv();return}
+  if(e.target.closest('.hi .cart')){e.preventDefault();e.stopPropagation();verCarrito();return}
+  const x=e.target.closest('[data-x]');if(x){document.querySelectorAll('.xseg button').forEach(b=>b.classList.toggle('on',b===x));
+    if(x.dataset.x==='cross'){cerrarOv();vista('ficha',13);agregar(13,true)}
+    else if(x.dataset.x==='cart'){verCarrito()}
+    else {cerrarOv();verDesc()}}
+},true);
 const H=location.hash;if(H.includes('celular'))document.querySelector('[data-m=mob]').click();if(H.includes('producto'))vista('ficha',9);
+if(H.includes('venta-cruzada'))document.querySelector('[data-x=cross]').click();if(H.includes('carrito'))document.querySelector('[data-x=cart]').click();if(H.includes('descripcion'))document.querySelector('[data-x=desc]').click();
 document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='m'||e.key==='M')document.querySelector('.seg:not(.pg) button:not(.on)').click()});
 </script>
 </body>
