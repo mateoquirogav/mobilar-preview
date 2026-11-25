@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobilar · Estructura 3 · PRAXIS</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--y:#FFD100;--y2:#FFF7D1;--rd:#E30613;--rd2:#FDECEC;--ink:#161616;--gr:#F5F5F2;--gr2:#ECECE8;--mu:#666;--ln:#E6E6E2;--ok:#11883A}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#E4E4E4;-webkit-font-smoothing:antialiased;touch-action:manipulation}
+svg{display:block}
+input,button{font:inherit;font-size:16px}
+/* ---------- barra PRAXIS ---------- */
+.tool{position:fixed;inset:0 0 auto 0;height:58px;z-index:50;background:#0F1B2E;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;gap:14px}
+.tool b{font:800 14px Montserrat;letter-spacing:.18em}
+.tool b span{font:400 13px Inter;letter-spacing:.02em;opacity:.65;margin-left:12px}
+.seg{display:flex;background:rgba(255,255,255,.08);border-radius:999px;padding:4px}
+.seg button{all:unset;cursor:pointer;display:flex;align-items:center;gap:7px;padding:7px 16px;border-radius:999px;font:500 13px Inter;color:#C9D3E3}
+.seg button.on{background:#fff;color:#0F1B2E}
+.seg.pg button{padding:7px 14px}
+.stage{position:fixed;inset:58px 0 0 0;display:flex;justify-content:center;align-items:flex-start;padding:22px;overflow:hidden}
+.device{width:100%;max-width:1360px;height:100%;background:#fff;border-radius:12px;box-shadow:0 30px 80px -30px rgba(0,0,0,.4);overflow:hidden;display:flex;flex-direction:column;transition:max-width .5s cubic-bezier(.2,.8,.2,1),border-radius .5s}
+.chrome{height:38px;flex:none;background:#F1F1F1;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #E2E2E2}
+.chrome i{width:11px;height:11px;border-radius:50%;background:#D8D8D8}
+.chrome .url{margin-left:14px;flex:1;max-width:420px;height:24px;border-radius:7px;background:#fff;display:flex;align-items:center;gap:6px;padding:0 10px;font-size:12px;color:#777}
+.screen{flex:1;overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth}
+.device.mob{max-width:390px;border-radius:44px;border:10px solid #111;height:min(100%,844px)}
+.device.mob .chrome{display:none}
+@media (max-width:760px){
+  .tool{height:52px;padding:0 12px}.tool b span{display:none}
+  .stage{inset:52px 0 0 0;padding:0}.device,.device.mob{max-width:none;border-radius:0;border:0;height:100%}
+  .chrome,.seg:not(.pg){display:none}
+}
+/* ---------- sitio ---------- */
+.site{container-type:inline-size;background:#fff}
+.wrap{max-width:1260px;margin:0 auto;padding:0 36px}
+.kick{display:inline-flex;align-items:center;gap:8px;font:800 11px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:var(--rd);margin-bottom:12px}
+.kick:before{content:"";width:18px;height:3px;border-radius:2px;background:var(--rd)}
+.h2{font:900 40px/1.05 Montserrat;color:var(--ink);letter-spacing:-.02em}
+.h2 em{font-style:normal;color:var(--rd)}
+.h2 mark{background:linear-gradient(transparent 58%,var(--y) 58%,var(--y) 92%,transparent 92%);color:inherit;padding:0 2px}
+.sub{font-size:16px;line-height:1.65;color:var(--mu);margin-top:14px;max-width:540px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 28px;border-radius:999px;font:800 13px Montserrat;letter-spacing:.04em;text-decoration:none;cursor:pointer;background:var(--rd);color:#fff;border:0;white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn.k{background:var(--ink)}
+.btn.y{background:var(--y);color:var(--ink)}
+.btn.o{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.wsp{background:#1DA851}
+.sec{padding:76px 0}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:26px;gap:20px}
+.link{display:inline-flex;align-items:center;gap:6px;font:800 13px Montserrat;color:var(--ink);text-decoration:none;white-space:nowrap}
+.link svg{width:16px;height:16px;color:var(--rd)}
+/* anuncio */
+.ann{background:var(--ink);color:#fff;height:36px;overflow:hidden}
+.ann-t{display:flex;flex-direction:column;animation:ann 12s infinite}
+.ann-t div{height:36px;display:flex;align-items:center;justify-content:center;gap:10px;font:700 12px Montserrat;letter-spacing:.06em}
+.ann-t b{color:var(--y)}
+.ann-t svg{width:16px;height:16px;color:var(--y)}
+@keyframes ann{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(-36px)}66%,94%{transform:translateY(-72px)}100%{transform:translateY(-108px)}}
+/* encabezado */
+.hdr{position:sticky;top:0;z-index:5;background:#fff;box-shadow:0 1px 0 var(--ln)}
+.hdr-t .wrap{height:78px;display:flex;align-items:center;gap:28px}
+.logo{display:flex;align-items:center;flex:none}
+.logo img{height:46px;width:auto;display:block}
+.srch{flex:1;max-width:620px;height:48px;display:flex;align-items:center;background:var(--gr);border-radius:999px;padding:0 6px 0 20px;gap:10px;border:1.5px solid transparent}
+.srch svg{width:20px;height:20px;color:var(--mu);flex:none}
+.srch input{flex:1;border:0;background:none;outline:0;min-width:0;color:var(--ink)}
+.srch button{all:unset;cursor:pointer;height:38px;padding:0 18px;border-radius:999px;background:var(--rd);color:#fff;font:800 12px Montserrat;letter-spacing:.04em}
+.hi{display:flex;gap:22px;margin-left:auto;align-items:center}
+.hi a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font:600 13px Inter;line-height:1.2}
+.hi a small{display:block;font:400 11.5px Inter;color:var(--mu)}
+.hi svg{width:24px;height:24px;flex:none}
+.cart{position:relative}.cart b{position:absolute;top:-6px;left:15px;background:var(--rd);color:#fff;font:700 10px Inter;width:18px;height:18px;border-radius:50%;display:grid;place-items:center}
+.burger{display:none;width:26px;height:26px}
+.nav{background:var(--y)}
+.nav .wrap{height:46px;display:flex;align-items:center;gap:26px;font:700 13.5px Montserrat;overflow:hidden}
+.nav a{color:var(--ink);text-decoration:none;white-space:nowrap}
+.nav .all{display:flex;align-items:center;gap:8px;background:var(--ink);color:#fff;height:46px;padding:0 18px;margin-left:-18px}
+.nav .all svg{width:18px;height:18px}
+.nav .hot{color:var(--rd)}
+.nav .r{margin-left:auto;display:flex;gap:6px;align-items:center}
+.nav .r svg{width:16px;height:16px}
+/* banner: carrusel con sus banners */
+.hero{position:relative;background:var(--y);overflow:hidden}
+.hs{display:flex;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.hs img{flex:none;width:100%;aspect-ratio:1440/362;object-fit:cover;display:block}
+.ha{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 18px -6px rgba(0,0,0,.35);border:0}
+.ha svg{width:20px;height:20px}
+.ha.l{left:20px}.ha.r{right:20px}
+.hd{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:7px}
+.hd i{width:8px;height:8px;border-radius:99px;background:rgba(0,0,0,.25);transition:width .3s,background .3s;cursor:pointer}
+.hd i.on{width:26px;background:var(--ink)}
+/* beneficios */
+.bens{padding:22px 0 0}
+.ben-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.ben{display:flex;gap:14px;align-items:center;padding:18px 18px;border-radius:16px;background:var(--gr);position:relative;overflow:hidden}
+.ben i{flex:none;width:50px;height:50px;border-radius:14px;background:var(--y);color:var(--ink);display:grid;place-items:center}
+.ben i svg{width:25px;height:25px}
+.ben h4{font:800 15px/1.2 Montserrat;letter-spacing:-.01em}
+.ben h4 em{font-style:normal;color:var(--rd)}
+.ben p{font-size:12.5px;line-height:1.4;margin-top:3px;color:var(--mu)}
+.pay{display:flex;align-items:center;gap:10px;margin-top:14px;padding:12px 18px;border:1px solid var(--ln);border-radius:14px;flex-wrap:wrap}
+.pay>b{font:800 12px Montserrat;margin-right:6px}
+.pay span{font:700 11.5px Inter;padding:6px 11px;border-radius:7px;background:var(--gr)}
+.pay .nx{background:#FF2E63;color:#fff}.pay .vi{background:#1A1F71;color:#fff}.pay .mc{background:#EB001B;color:#fff}.pay .so{background:#F39200;color:#fff}.pay .su{background:#E30613;color:#fff}.pay .cr{background:#003A8C;color:#fff}.pay .mp{background:#00B1EA;color:#fff}
+.pay small{margin-left:auto;font-size:12px;color:var(--mu)}
+/* categorías */
+.cats{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:14px}
+.cat{display:flex;flex-direction:column;align-items:center;gap:12px;text-decoration:none;color:var(--ink);text-align:center}
+.cat div{width:100%;aspect-ratio:1;border-radius:50%;background:var(--gr);display:grid;place-items:center;overflow:hidden;border:2px solid transparent;transition:border-color .25s}
+.cat:hover div{border-color:var(--y)}
+.cat img{width:62%;height:62%;object-fit:contain;mix-blend-mode:multiply}
+.cat b{font:700 13.5px/1.25 Montserrat}
+/* productos */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 4*16px)/5);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{scroll-snap-align:start}
+.rw{position:relative}
+.ra{position:absolute;top:34%;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--ln);display:grid;place-items:center;cursor:pointer;z-index:2;box-shadow:0 6px 16px -8px rgba(0,0,0,.3)}
+.ra svg{width:18px;height:18px}
+.ra.l{left:-20px}.ra.r{right:-20px}
+.card{text-decoration:none;color:var(--ink);display:flex;flex-direction:column;background:#fff;border:1px solid var(--ln);border-radius:16px;overflow:hidden}
+.card .ph{position:relative;aspect-ratio:1;background:#fff;padding:14px}
+.card .ph img{width:100%;height:100%;object-fit:contain;display:block}
+.tag{position:absolute;top:12px;left:12px;z-index:2;background:var(--rd);color:#fff;font:800 11px Montserrat;padding:5px 9px;border-radius:7px}
+.tag.y{background:var(--y);color:var(--ink)}
+.card .bd{padding:4px 16px 16px;display:flex;flex-direction:column;flex:1;border-top:1px solid var(--gr)}
+.card h3{font:600 13.5px/1.35 Inter;margin-top:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:36px}
+.pr{margin-top:auto;padding-top:10px}
+.pr s{font-size:12.5px;color:#9A9A9A;display:block;min-height:17px}
+.pr b{font:900 21px Montserrat;letter-spacing:-.02em}
+.cu{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:12.5px;color:var(--ok);font-weight:600}
+.cu svg{width:15px;height:15px;flex:none}
+/* destacado + ofertas */
+.of{display:grid;grid-template-columns:300px 1fr;gap:16px}
+.hot{background:var(--y);border-radius:20px;padding:22px;display:flex;flex-direction:column}
+.hot .kick{color:var(--ink)}.hot .kick:before{background:var(--ink)}
+.hot h3{font:900 26px/1.05 Montserrat;letter-spacing:-.02em}
+.hot .card{margin-top:16px;flex:1}
+.clock{display:flex;gap:6px;margin-top:12px}
+.clock span{background:var(--ink);color:#fff;border-radius:8px;padding:6px 8px;font:800 15px Montserrat;min-width:44px;text-align:center}
+.clock span small{display:block;font:500 9px Inter;opacity:.7;letter-spacing:.06em}
+/* por qué Mobilar */
+.why{background:var(--y);position:relative;overflow:hidden}
+.why-in{display:grid;grid-template-columns:1fr 1.05fr;column-gap:56px;grid-template-areas:"t r" "z r" "n r";align-items:start}
+.why-top{display:contents}
+.why-top>div:first-child{grid-area:t}
+.reels{grid-area:r;align-self:center}
+.rz{grid-area:z}.nums{grid-area:n}
+.why .kick{color:var(--ink)}.why .kick:before{background:var(--ink)}
+.why .h2{font-size:46px}
+.why .sub{color:#3A3A3A}
+.rz{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.rz div{background:#fff;border-radius:16px;padding:16px;display:flex;gap:12px;align-items:flex-start}
+.rz i{flex:none;width:40px;height:40px;border-radius:12px;background:var(--ink);color:var(--y);display:grid;place-items:center}
+.rz i svg{width:20px;height:20px}
+.rz b{display:block;font:800 14px/1.25 Montserrat}
+.rz span{font-size:12.5px;line-height:1.45;color:var(--mu);display:block;margin-top:3px}
+.nums{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:30px;margin-top:26px}
+.nums div b{display:block;font:900 34px/1 Montserrat;letter-spacing:-.03em}
+.nums div span{font:600 12px Inter;color:#3A3A3A}
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:center}
+.reels .vid:nth-child(2){transform:translateY(-24px)}
+.vid{position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:#000;box-shadow:0 24px 50px -24px rgba(0,0,0,.55)}
+.vid video{width:100%;height:100%;object-fit:cover;display:block}
+.vid .lbl{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(255,255,255,.95);border-radius:12px;padding:8px 10px;font:800 11.5px/1.25 Montserrat}
+.vid .lbl small{display:block;font:500 10.5px Inter;color:var(--mu);margin-top:2px}
+.snd{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;display:grid;place-items:center;cursor:pointer;border:0;z-index:2}
+.snd svg{width:17px;height:17px}
+.snd .on{display:none}.snd.u .on{display:block}.snd.u .off{display:none}
+.why .wm{position:absolute;right:-30px;bottom:-60px;font:900 220px/1 Montserrat;color:rgba(0,0,0,.04);letter-spacing:-.05em;pointer-events:none}
+/* reseñas de Google */
+.gsum{display:flex;align-items:center;gap:22px;flex-wrap:wrap;background:#fff;border:1px solid var(--ln);border-radius:16px;padding:18px 24px;margin-bottom:26px}
+.gsum .gl{width:38px;height:38px}
+.gsum .gn{font:900 40px/1 Montserrat}
+.gsum .gt{font-size:13px;color:var(--mu)}
+.gsum .gt b{display:block;color:var(--ink);font:700 15px Inter;margin-bottom:3px}
+.gsum .btn{margin-left:auto;height:46px;font-size:12px}
+.st{display:flex;gap:2px;color:#FBBC04}.st svg{width:16px;height:16px}
+.marq{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.mt{display:flex;gap:16px;width:max-content;animation:mq 50s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.gr{width:330px;flex:none;border:1px solid var(--ln);padding:22px;background:#fff;border-radius:16px}
+.gr-h{display:flex;align-items:center;gap:11px}
+.gr-h i{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font:600 16px Inter;font-style:normal;flex:none}
+.gr-h b{font:600 14px Inter;display:block}
+.gr-h small{font-size:12px;color:var(--mu)}
+.gr-h .g{margin-left:auto;width:20px;height:20px}
+.gr .st{margin-top:14px}
+.gr p{margin-top:10px;font-size:14px;line-height:1.6;color:#3D3D3D}
+.tnote{text-align:center;font-size:12px;color:var(--mu);margin-top:20px}
+/* categorías con su banner */
+.cb+.cb{margin-top:56px}
+.cb>img{width:100%;display:block;border-radius:18px;margin-bottom:18px}
+/* video + texto x2 */
+.vt{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}
+.vt+.vt{margin-top:84px}
+.vt.rev{grid-template-columns:.85fr 1.15fr}.vt.rev .vid{order:-1}
+.vt .vid{max-width:360px;width:100%;justify-self:center}
+.vt-l{display:grid;gap:10px;margin-top:20px}
+.vt-l div{display:flex;gap:12px;align-items:center;font-size:15px}
+.vt-l i{flex:none;width:28px;height:28px;border-radius:50%;background:var(--y);display:grid;place-items:center}
+.vt-l i svg{width:14px;height:14px}
+.vt .btn{margin-top:26px}
+.cuo{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.cuo div{background:var(--gr);border-radius:14px;padding:12px 16px}
+.cuo b{display:block;font:900 26px/1 Montserrat;color:var(--rd)}
+.cuo span{font-size:12px;color:var(--mu)}
+/* faq */
+.faq-g{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+.fq{border-bottom:1px solid var(--ln)}
+.fq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:22px 0;font:700 15.5px Montserrat}
+.fq summary::-webkit-details-marker{display:none}
+.fq summary svg{width:22px;height:22px;flex:none;transition:transform .3s;color:var(--rd)}
+.fq[open] summary svg{transform:rotate(45deg)}
+.fq p{padding:0 40px 22px 0;font-size:15px;line-height:1.65;color:var(--mu)}
+/* llamado final */
+.cta-f{position:relative;overflow:hidden;isolation:isolate;background:var(--ink);color:#fff;border-radius:26px;padding:60px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.cta-f .h2{color:#fff;font-size:42px}
+.cta-f .h2 em{color:var(--y)}
+.cta-f .sub{color:#CFCFCF}
+.cta-f .bt{display:grid;gap:12px}
+.cta-f .btn{height:58px;width:100%}
+.cta-f .btn.o{color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.6)}
+.cta-f .hr{font-size:12.5px;color:#A9A9A9;text-align:center}
+.cta-f:before{content:"";position:absolute;z-index:-1;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;background:var(--y);opacity:.12}
+/* sucursales */
+.map-g{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch}
+.suc{display:grid;gap:10px;margin-top:22px}
+.suc div{display:flex;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--ln);border-radius:14px}
+.suc div.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.suc i{flex:none;width:38px;height:38px;border-radius:12px;background:var(--y);display:grid;place-items:center}
+.suc i svg{width:19px;height:19px}
+.suc b{display:block;font:800 14px Montserrat}
+.suc span{font-size:13px;color:var(--mu)}
+.map-f{border-radius:20px;overflow:hidden;min-height:420px;background:var(--gr2)}
+.map-f iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
+/* pie */
+.foot{background:var(--ink);color:#B9B9B9;padding:0 0 26px;margin-top:76px}
+.news{background:var(--y);color:var(--ink)}
+.news .wrap{display:flex;align-items:center;gap:30px;padding-top:28px;padding-bottom:28px}
+.news b{font:900 22px/1.15 Montserrat;letter-spacing:-.02em}
+.news form{margin-left:auto;display:flex;gap:8px;flex:1;max-width:480px}
+.news input{flex:1;height:50px;border-radius:999px;border:0;padding:0 20px;outline:0;min-width:0}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-top:54px}
+.foot .logo img{height:44px;filter:brightness(0) invert(1)}
+.foot p{font-size:14px;line-height:1.65;margin-top:18px;max-width:320px}
+.foot h4{font:800 13px Montserrat;color:#fff;margin-bottom:16px}
+.foot ul{list-style:none;display:grid;gap:10px;font-size:14px}
+.fb{border-top:1px solid #2C2C2C;margin-top:50px;padding-top:22px;display:flex;justify-content:space-between;font-size:12px;color:#8C8C8C}
+.wapp{position:sticky;bottom:18px;margin:-70px 18px 18px auto;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 25px -8px rgba(0,0,0,.4);z-index:6}
+.wapp svg{width:30px;height:30px;color:#fff}
+/* ---------- ficha ---------- */
+.crumb{display:flex;gap:8px;font-size:12.5px;color:var(--mu);padding:24px 0 20px;flex-wrap:wrap}
+.crumb a{color:var(--mu);text-decoration:none}.crumb b{color:var(--ink);font-weight:600}
+.fx{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+.fx-main{position:sticky;top:150px;aspect-ratio:1;border:1px solid var(--ln);border-radius:22px;padding:40px;background:#fff}
+.fx-main img{width:100%;height:100%;object-fit:contain}
+.fx-info h1{font:800 30px/1.15 Montserrat;letter-spacing:-.02em;margin-top:10px}
+.fx-sk{font-size:12.5px;color:var(--mu);margin-top:8px}
+.fx-pr{margin-top:20px;padding:20px;border-radius:18px;background:var(--gr)}
+.fx-pr s{color:#999;font-size:14px}
+.fx-pr b{display:flex;align-items:center;gap:10px;font:900 38px Montserrat;letter-spacing:-.03em}
+.fx-pr b .off{font:800 13px Montserrat;background:var(--rd);color:#fff;padding:4px 9px;border-radius:7px;letter-spacing:0}
+.fx-cu{display:flex;gap:10px;align-items:center;margin-top:10px;background:#fff;border-radius:12px;padding:12px 14px;font-size:14px}
+.fx-cu svg{width:22px;height:22px;color:var(--ok);flex:none}
+.fx-cu strong{color:var(--ok)}
+.fx-cu a{margin-left:auto;font-size:12.5px;color:var(--ink);font-weight:600}
+.fx-buy{display:flex;gap:10px;margin-top:20px}
+.fx-buy .btn{flex:1;height:58px}
+.qty{display:flex;align-items:center;border:1.5px solid #D6D6D6;border-radius:999px}
+.qty button{all:unset;cursor:pointer;width:44px;height:54px;display:grid;place-items:center;font-size:18px}
+.qty b{min-width:22px;text-align:center;font-weight:600}
+.fx-wa{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:13.5px;color:var(--ink);font-weight:500;text-decoration:none}
+.fx-wa svg{width:18px;height:18px;flex:none;color:#1DA851}
+.ent{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.ent div{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--ln);padding:14px;border-radius:14px}
+.ent i{flex:none;width:36px;height:36px;border-radius:10px;background:var(--y);display:grid;place-items:center}
+.ent i svg{width:18px;height:18px}
+.ent span{font-size:12px;color:var(--mu);line-height:1.4}
+.ent b{display:block;font-size:13px;color:var(--ink);font-weight:700}
+.fx-acc{margin-top:18px;border-top:1px solid var(--ln)}
+.fx-bar{display:none}
+/* aparición */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0)*90ms)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}.mt,.ann-t{animation:none}}
+/* ---------- celular (por ancho del sitio) ---------- */
+@container (max-width:760px){
+  .wrap{padding:0 16px}
+  .sec{padding:50px 0}
+  .h2{font-size:27px}
+  .sub{font-size:14.5px}
+  .head{margin-bottom:18px}
+  .ann-t div{font-size:11px;letter-spacing:.02em}
+  .hdr-t .wrap{height:auto;flex-wrap:wrap;gap:10px 12px;padding-top:10px;padding-bottom:10px}
+  .burger{display:block}
+  .logo img{height:34px}
+  .hi{gap:14px}.hi .opt{display:none}.hi a span{display:none}
+  .srch{order:5;flex:0 0 100%;max-width:none;height:44px;padding-left:16px}
+  .srch button{display:none}
+  .nav .wrap{height:40px;gap:20px;font-size:12.5px;overflow-x:auto;scrollbar-width:none}
+  .nav .wrap::-webkit-scrollbar{display:none}
+  .nav .all,.nav .r{display:none}
+  .ha{display:none}
+  .hd{bottom:6px}.hd i{width:6px;height:6px}.hd i.on{width:18px}
+  .bens{padding-top:14px}
+  .ben-g{grid-template-columns:1fr 1fr;gap:8px}
+  .ben{flex-direction:column;align-items:flex-start;gap:9px;padding:13px;border-radius:14px}
+  .ben i{width:38px;height:38px;border-radius:11px}.ben i svg{width:20px;height:20px}
+  .ben h4{font-size:13px}.ben p{font-size:11px}
+  .pay{gap:6px;padding:10px 12px}.pay>b{flex:0 0 100%;font-size:11px}.pay span{font-size:10.5px;padding:5px 8px}.pay small{display:none}
+  .cats{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 10px}
+  .cat{gap:7px}.cat b{font-size:11px}
+  .rail{grid-auto-columns:46%;gap:10px}
+  .ra{display:none}
+  .card{border-radius:12px}
+  .card .ph{padding:8px}
+  .card .bd{padding:2px 10px 12px}
+  .card h3{font-size:12px;min-height:32px;margin-top:9px}
+  .pr s{font-size:11px;min-height:15px}.pr b{font-size:17px}
+  .cu{font-size:11px;gap:4px}.cu svg{width:13px;height:13px}
+  .tag{top:8px;left:8px;font-size:10px;padding:4px 7px}
+  .of{grid-template-columns:1fr}
+  .hot{padding:16px;border-radius:16px}
+  .hot .card{display:grid;grid-template-columns:42% 1fr}
+  .hot .card .bd{border-top:0;border-left:1px solid var(--gr)}
+  .hot h3{font-size:22px}
+  /* por qué: texto y video lado a lado */
+  .why-in{display:block}
+  .why .h2{font-size:28px}
+  .why-top{display:grid;grid-template-columns:1fr 40%;gap:14px;align-items:center}
+  .why-top .sub{font-size:13px;line-height:1.5;margin-top:8px}
+  .why-top>div:first-child{grid-area:auto}
+  .reels{display:contents}
+  .reels .vid:not(:first-child){display:none}
+  .reels .vid:first-child{transform:none}
+  .rz{grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}
+  .rz div{flex-direction:column;gap:8px;padding:12px;border-radius:14px}
+  .rz i{width:34px;height:34px;border-radius:10px}.rz i svg{width:17px;height:17px}
+  .rz b{font-size:12.5px}.rz span{font-size:11px}
+  .nums{gap:8px;display:grid;grid-template-columns:repeat(4,1fr);margin-top:18px}
+  .nums{grid-template-columns:repeat(4,1fr)}
+  .nums div b{font-size:22px}.nums div span{font-size:10px;line-height:1.2;display:block}
+  .why .wm{display:none}
+  .vid .lbl{left:6px;right:6px;bottom:6px;padding:6px 7px;font-size:9.5px;border-radius:9px}.vid .lbl small{display:none}
+  .snd{width:28px;height:28px;top:6px;right:6px}.snd svg{width:14px;height:14px}
+  .gsum{padding:14px 16px;gap:12px}
+  .gsum .gl{width:30px;height:30px}.gsum .gn{font-size:30px}
+  .gsum .btn{margin-left:0;width:100%}
+  .gr{width:280px}
+  .cb+.cb{margin-top:40px}
+  .cb>img{border-radius:12px;margin-bottom:12px}
+  /* video + texto lado a lado en celular */
+  .vt{grid-template-columns:1fr 40%;gap:14px}.vt.rev{grid-template-columns:40% 1fr}
+  .vt.rev .vid{order:0}
+  .vt+.vt{margin-top:46px}
+  .vt .h2{font-size:21px}
+  .vt .sub{font-size:12.5px;line-height:1.5;margin-top:8px}
+  .vt-l,.cuo{display:none}
+  .vt .btn{height:auto;min-height:40px;padding:10px 14px;font-size:11px;margin-top:14px;white-space:normal;text-align:center;line-height:1.25}
+  .vt .kick{font-size:9.5px;margin-bottom:8px}.vt .kick:before{width:12px}
+  .faq-g{grid-template-columns:1fr;gap:20px}
+  .fq summary{font-size:14px;padding:18px 0}
+  .fq p{padding-right:0;font-size:14px}
+  .cta-f{grid-template-columns:1fr;padding:34px 20px;border-radius:20px;gap:22px}.cta-f .h2{font-size:27px}
+  .map-g{grid-template-columns:1fr;gap:16px}
+  .map-f,.map-f iframe{min-height:260px}
+  .foot{margin-top:50px}
+  .news .wrap{flex-direction:column;align-items:stretch;gap:14px}
+  .news b{font-size:18px}.news form{margin-left:0;max-width:none}.news .btn{padding:0 18px}
+  .fg{grid-template-columns:1fr 1fr;gap:30px}.fg>div:first-child{grid-column:1/-1}
+  .fb{flex-direction:column;gap:6px}
+  /* ficha */
+  .crumb{padding:14px 0 10px;font-size:11.5px}
+  .fx{grid-template-columns:1fr;gap:18px}
+  .fx-main{position:static;padding:20px;border-radius:16px}
+  .fx-info h1{font-size:21px}
+  .fx-pr b{font-size:30px}
+  .ent{grid-template-columns:1fr}
+  .fx-buy{display:none}
+  .fx-bar{display:flex;position:sticky;bottom:0;z-index:7;align-items:center;justify-content:space-between;gap:12px;background:#fff;border-top:1px solid var(--ln);padding:10px 16px;box-shadow:0 -8px 24px -12px rgba(0,0,0,.25)}
+  .fx-bar small{display:block;font-size:11px;color:var(--ok);font-weight:600}
+  .fx-bar b{font:900 18px Montserrat}
+  .fx-bar .btn{height:48px;padding:0 22px;font-size:12px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="ok" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="card" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></g></symbol>
+    <symbol id="truck" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5h11v10h-11zM13.5 10h4.2l3 3.2v3.3h-7.2"/><circle cx="6.5" cy="17.5" r="1.9"/><circle cx="17" cy="17.5" r="1.9"/></g></symbol>
+    <symbol id="id" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><circle cx="8.5" cy="11" r="2.3"/><path d="M5 16.5c.7-1.8 2-2.7 3.5-2.7s2.8.9 3.5 2.7M14.5 10h4M14.5 13.5h3"/></g></symbol>
+    <symbol id="store" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9.5 5 4.5h14l1.5 5M3.5 9.5c0 1.4 1.1 2.5 2.4 2.5s2.4-1.1 2.4-2.5c0 1.4 1.1 2.5 2.4 2.5h.6c1.3 0 2.4-1.1 2.4-2.5 0 1.4 1.1 2.5 2.4 2.5s2.4-1.1 2.4-2.5M5 12v7.5h14V12M10 19.5V15h4v4.5"/></g></symbol>
+    <symbol id="pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></g></symbol>
+    <symbol id="phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 3.5h3.5l1.8 4.5-2.3 1.4a11 11 0 0 0 5.6 5.6l1.4-2.3 4.5 1.8V18a2.5 2.5 0 0 1-2.5 2.5A15 15 0 0 1 2.5 6 2.5 2.5 0 0 1 5 3.5z"/></symbol>
+    <symbol id="tool" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M14.5 6.5a4 4 0 0 0 5 5L21 13l-8 8-3.5-3.5 8-8M14.5 6.5 13 5a4 4 0 0 0-5.5 5.5L3 15l3 3 4.5-4.5"/></symbol>
+    <symbol id="medal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14.5" r="6"/><path d="m8.5 9.5-3-6h4l2.5 5M15.5 9.5l3-6h-4L12 8.5M12 12l.9 1.8 2 .3-1.4 1.4.3 2-1.8-.9-1.8.9.3-2-1.4-1.4 2-.3z"/></g></symbol>
+    <symbol id="chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.4A9 9 0 1 1 21 12zM8.5 10.5h7M8.5 14h4.5"/></symbol>
+    <symbol id="clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+    <symbol id="mute" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4zM16 9.5l5 5M21 9.5l-5 5"/></g></symbol>
+    <symbol id="vol" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4zM16 9a4.5 4.5 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></g></symbol>
+    <symbol id="gg" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></symbol>
+  </defs>
+</svg>
+
+<div class="tool">
+  <b>PRAXIS<span>Mobilar · Estructura 3 · vista previa de tu web</span></b>
+  <div class="seg pg"><button data-v="home" class="on">Inicio</button><button data-v="ficha">Producto</button></div>
+  <div class="seg">
+    <button data-m="pc" class="on"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>PC</button>
+    <button data-m="mob"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>Celular</button>
+  </div>
+</div>
+
+<div class="stage">
+<div class="device" id="device">
+ <div class="chrome"><i></i><i></i><i></i><div class="url"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>mobilar.com.ar</div></div>
+ <div class="screen" id="screen">
+ <div class="site">
+
+  <!-- 1 · Barra de anuncios -->
+  <div class="ann"><div class="ann-t">
+    <div><svg><use href="#card"/></svg><span><b>6 cuotas sin interés</b> en todos los productos</span></div>
+    <div><svg><use href="#truck"/></svg><span>Envíos a <b>todo el país</b> · flota propia en Gran Tucumán</span></div>
+    <div><svg><use href="#id"/></svg><span>Créditos personales <b>solo con tu DNI</b></span></div>
+    <div><svg><use href="#card"/></svg><span><b>6 cuotas sin interés</b> en todos los productos</span></div>
+  </div></div>
+
+  <!-- 2 · Encabezado -->
+  <header class="hdr">
+    <div class="hdr-t"><div class="wrap">
+      <svg class="burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <a class="logo" href="#top" data-go="home" aria-label="Mobilar"><img src="logo.png" alt="Mobilar"></a>
+      <label class="srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Buscá entre más de 5.500 productos"><button type="button">Buscar</button></label>
+      <div class="hi">
+        <a class="opt" href="#mapa"><svg><use href="#pin"/></svg><span>Sucursales<small>5 en Tucumán</small></span></a>
+        <a class="opt" href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span>Mi cuenta<small>Ingresá</small></span></a>
+        <a class="cart" href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4h2.5l2.2 11h10.6L20.5 7H6.4"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></svg><b>0</b></a>
+      </div>
+    </div></div>
+    <nav class="nav"><div class="wrap">
+      <a class="all" href="#cats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Categorías</a>
+      <a class="hot" href="#ofertas">Ofertas</a><a href="#cb">Climatización</a><a href="#cb">Hogar</a><a href="#cb">Tv, Audio y Video</a><a href="#cb">Tecnología</a><a href="#cb">Muebles y Colchones</a><a href="#cb">Pequeños electro</a>
+      <a class="r" href="#cuotas"><svg><use href="#card"/></svg>Promociones bancarias</a>
+    </div></nav>
+  </header>
+
+  <div id="home">
+  <!-- 3 · Banner principal: sus banners en carrusel -->
+  <section class="hero" id="top">
+    <div class="hs" id="hs">
+      <img src="b1.jpg" alt="Todo para tu hogar"><img src="b2.jpg" alt="La financiación correcta te da comodidad"><img src="b3.jpg" alt="6 cuotas sin interés en todos los productos"><img src="b4.jpg" alt="Que el precio no te frene"><img src="b5.jpg" alt="Stanley"><img src="b6.jpg" alt="Todo para tu comercio">
+    </div>
+    <button class="ha l" data-h="-1" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 5-7 7 7 7"/></svg></button>
+    <button class="ha r" data-h="1" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m9 5 7 7-7 7"/></svg></button>
+    <div class="hd" id="hd"></div>
+  </section>
+
+  <!-- 4 · Beneficios -->
+  <section class="bens" id="cuotas"><div class="wrap">
+    <div class="ben-g">
+      <div class="ben rv"><i><svg><use href="#card"/></svg></i><div><h4><em>6 y 12</em> cuotas sin interés</h4><p>Con Tarjeta Sol, SuCrédito, Naranja y Credimas</p></div></div>
+      <div class="ben rv" style="--i:1"><i><svg><use href="#id"/></svg></i><div><h4>Crédito con tu DNI</h4><p>Créditos personales a sola firma</p></div></div>
+      <div class="ben rv" style="--i:2"><i><svg><use href="#truck"/></svg></i><div><h4>Envíos a todo el país</h4><p>Con flota propia en Gran Tucumán</p></div></div>
+      <div class="ben rv" style="--i:3"><i><svg><use href="#store"/></svg></i><div><h4>Retirá en tu sucursal</h4><p>5 locales en Tucumán</p></div></div>
+    </div>
+    <div class="pay rv"><b>Pagá como quieras:</b><span class="vi">VISA</span><span class="mc">Mastercard</span><span class="nx">Naranja X</span><span class="so">Tarjeta Sol</span><span class="su">SuCrédito</span><span class="cr">Credimas</span><span class="mp">Mercado Pago</span><small>Precios exclusivos de la tienda online</small></div>
+  </div></section>
+
+  <!-- 5 · Categorías -->
+  <section class="sec" id="cats" style="padding-top:56px;padding-bottom:20px"><div class="wrap">
+    <div class="head"><div><div class="kick">Categorías</div><div class="h2">¿Qué estás <mark>buscando?</mark></div></div><a class="link" href="#cats">Ver todas<svg><use href="#ar"/></svg></a></div>
+    <div class="cats" id="gC"></div>
+  </div></section>
+
+  <!-- 6 · Productos: destacado + ofertas de la semana -->
+  <section class="sec" id="ofertas" style="padding-top:44px"><div class="wrap">
+    <div class="head"><div><div class="kick">Esta semana</div><div class="h2">Ofertas <em>de la semana</em></div></div><a class="link" href="#ofertas">Ver todas<svg><use href="#ar"/></svg></a></div>
+    <div class="of">
+      <div class="hot rv"><div class="kick">Hasta agotar stock</div><h3>Precio especial por unidades limitadas</h3>
+        <div class="clock" id="clk"></div>
+        <div id="gH"></div>
+      </div>
+      <div class="rw"><button class="ra l" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 5-7 7 7 7"/></svg></button><div class="rail" id="gO"></div><button class="ra r" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m9 5 7 7-7 7"/></svg></button></div>
+    </div>
+  </div></section>
+
+  <!-- 7 · Por qué Mobilar es la mejor opción -->
+  <section class="sec why" id="why"><div class="wrap">
+    <div class="why-in">
+      <div class="why-top">
+        <div>
+          <div class="kick rv">Por qué elegirnos</div>
+          <div class="h2 rv">Por qué Mobilar es <em>la mejor opción</em> en Tucumán</div>
+          <p class="sub rv" style="--i:1">Somos una empresa familiar tucumana con más de 40 años equipando casas. Te asesoramos, te financiamos y te lo llevamos.</p>
+        </div>
+        <div class="reels" id="reels">
+          <div class="vid rv"><video src="v-todo.mp4" poster="v-todo.jpg" muted loop playsinline preload="metadata"></video><button class="snd" aria-label="Activar sonido"><svg class="off"><use href="#mute"/></svg><svg class="on"><use href="#vol"/></svg></button><div class="lbl">Hay de todo<small>Recorré una de nuestras sucursales</small></div></div>
+          <div class="vid rv" style="--i:1"><video src="v-cuotas.mp4" poster="v-cuotas.jpg" muted loop playsinline preload="metadata"></video><button class="snd" aria-label="Activar sonido"><svg class="off"><use href="#mute"/></svg><svg class="on"><use href="#vol"/></svg></button><div class="lbl">12 cuotas sin interés<small>Muebles, colchones y regalería</small></div></div>
+          <div class="vid rv" style="--i:2"><video src="v-tafi.mp4" poster="v-tafi.jpg" muted loop playsinline preload="metadata"></video><button class="snd" aria-label="Activar sonido"><svg class="off"><use href="#mute"/></svg><svg class="on"><use href="#vol"/></svg></button><div class="lbl">Te quedamos cerca<small>Sucursal Tafí Viejo · Av. Alem 98</small></div></div>
+        </div>
+      </div>
+      <div class="rz">
+        <div class="rv"><i><svg><use href="#medal"/></svg></i><p><b>Más de 40 años en Tucumán</b><span>Trayectoria, prestigio y confianza de una empresa familiar.</span></p></div>
+        <div class="rv" style="--i:1"><i><svg><use href="#card"/></svg></i><p><b>La mejor financiación</b><span>Cuotas sin interés con tus tarjetas o crédito personal con DNI.</span></p></div>
+        <div class="rv" style="--i:2"><i><svg><use href="#phone"/></svg></i><p><b>Te asesora un especialista</b><span>Venta telefónica de lunes a viernes de 10 a 19 h.</span></p></div>
+        <div class="rv" style="--i:3"><i><svg><use href="#tool"/></svg></i><p><b>Servicio técnico</b><span>Te acompañamos también después de la compra.</span></p></div>
+      </div>
+      <div class="nums rv">
+        <div><b data-n="40">+40</b><span>años de trayectoria</span></div>
+        <div><b data-n="5500">+5.500</b><span>productos online</span></div>
+        <div><b data-n="5">5</b><span>sucursales en Tucumán</span></div>
+        <div><b>+7.800</b><span>seguidores en Instagram</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="wm">MOBILAR</div>
+  </section>
+
+  <!-- 8 · Testimonios: reseñas de Google -->
+  <section class="sec" id="tst" style="background:var(--gr)">
+    <div class="wrap">
+      <div class="head"><div><div class="kick">Opiniones</div><div class="h2">Lo que dicen <em>en Google</em></div></div></div>
+      <div class="gsum rv">
+        <svg class="gl"><use href="#gg"/></svg>
+        <div class="gn">4,6</div>
+        <div class="gt"><b>Mobilar · San Miguel de Tucumán</b><span class="st" id="gs"></span></div>
+        <a class="btn k" href="#tst">Ver todas en Google</a>
+      </div>
+    </div>
+    <div class="marq"><div class="mt" id="mt"></div></div>
+    <p class="tnote">Reseñas de ejemplo: en tu web se muestran las reales de tu perfil de Google.</p>
+  </section>
+
+  <!-- 9 · Categorías con sus banners -->
+  <section class="sec" id="cb"><div class="wrap" id="gB"></div></section>
+
+  <!-- 10 · Video + texto x2 -->
+  <section class="sec" id="it" style="padding-top:10px"><div class="wrap">
+    <div class="vt">
+      <div>
+        <div class="kick rv">Financiación</div>
+        <div class="h2 rv">Renová tu casa <em>sin pagar todo junto</em></div>
+        <p class="sub rv" style="--i:1">Electrodomésticos, tecnología y muebles con la financiación de la buena: cuotas sin interés con tus tarjetas o crédito personal solo con tu DNI.</p>
+        <div class="cuo rv" style="--i:2"><div><b>6</b><span>cuotas sin interés<br>en todo</span></div><div><b>12</b><span>cuotas sin interés<br>con Naranja</span></div><div><b>DNI</b><span>crédito personal<br>a sola firma</span></div></div>
+        <a class="btn rv" style="--i:3" href="#cuotas">Ver promociones bancarias</a>
+      </div>
+      <div class="vid rv"><video src="v-financ.mp4" poster="v-financ.jpg" muted loop playsinline preload="metadata"></video><button class="snd" aria-label="Activar sonido"><svg class="off"><use href="#mute"/></svg><svg class="on"><use href="#vol"/></svg></button></div>
+    </div>
+    <div class="vt rev">
+      <div class="vid rv"><video src="v-aires.mp4" poster="v-aires.jpg" muted loop playsinline preload="metadata"></video><button class="snd" aria-label="Activar sonido"><svg class="off"><use href="#mute"/></svg><svg class="on"><use href="#vol"/></svg></button></div>
+      <div>
+        <div class="kick rv">Climatización</div>
+        <div class="h2 rv">El calor tucumano <em>no espera</em></div>
+        <p class="sub rv" style="--i:1">Aires acondicionados, ventiladores y climatizadores de las mejores marcas, con instalación coordinada y entrega con flota propia.</p>
+        <div class="vt-l rv" style="--i:2">
+          <div><i><svg><use href="#ok"/></svg></i>Hitachi, RCA, Philco, BGH y más</div>
+          <div><i><svg><use href="#ok"/></svg></i>Te asesoramos por frigorías y ambiente</div>
+          <div><i><svg><use href="#ok"/></svg></i>Entrega a domicilio en Gran Tucumán</div>
+        </div>
+        <a class="btn k rv" style="--i:3" href="#cb">Ver aires acondicionados</a>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- 11 · Preguntas frecuentes -->
+  <section class="sec" id="faq" style="background:var(--gr)"><div class="wrap faq-g">
+    <div><div class="kick">Preguntas frecuentes</div><div class="h2">Todo lo que <em>necesitás saber</em></div><p class="sub">¿Te quedó alguna duda? Llamanos o escribinos por WhatsApp y te responde un especialista.</p></div>
+    <div id="fq"></div>
+  </div></section>
+
+  <!-- 12 · Llamado final -->
+  <section class="sec"><div class="wrap">
+    <div class="cta-f rv">
+      <div>
+        <div class="h2">¿No sabés qué modelo <em>te conviene?</em></div>
+        <p class="sub">Contanos qué necesitás y un especialista te recomienda el producto y la mejor forma de pagarlo.</p>
+      </div>
+      <div class="bt">
+        <a class="btn wsp" href="#mapa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Escribinos por WhatsApp</a>
+        <a class="btn o" href="#mapa"><svg><use href="#phone"/></svg>Llamar al 0381 421-8723</a>
+        <span class="hr">Lunes a viernes de 10 a 19 h</span>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- 13 · Sucursales -->
+  <section class="sec" id="mapa" style="padding-top:0"><div class="wrap map-g">
+    <div>
+      <div class="kick">Sucursales</div><div class="h2">Visitanos en <em>Tucumán</em></div>
+      <div class="suc">
+        <div class="on"><i><svg><use href="#pin"/></svg></i><p><b>Casa central</b><span>24 de Septiembre 221 · San Miguel de Tucumán</span></p></div>
+        <div><i><svg><use href="#pin"/></svg></i><p><b>Tafí Viejo</b><span>Av. Alem 98</span></p></div>
+        <div><i><svg><use href="#pin"/></svg></i><p><b>Banda del Río Salí</b><span>Sucursal Banda del Río Salí</span></p></div>
+        <div><i><svg><use href="#pin"/></svg></i><p><b>Bella Vista</b><span>Sucursal Bella Vista</span></p></div>
+        <div><i><svg><use href="#truck"/></svg></i><p><b>Centro de distribución</b><span>Parque Industrial Tucumán</span></p></div>
+      </div>
+    </div>
+    <div class="map-f"><iframe title="Mapa" loading="lazy" src="https://www.google.com/maps?q=24+de+Septiembre+221,+San+Miguel+de+Tucum%C3%A1n&z=15&output=embed"></iframe></div>
+  </div></section>
+  </div><!-- /home -->
+
+  <!-- FICHA DE PRODUCTO -->
+  <main id="ficha" hidden><div class="wrap">
+    <div class="crumb"><a href="#top" data-go="home">Inicio</a><span>/</span><a href="#ofertas" data-go="home">Ofertas</a><span>/</span><b id="fxName2">Producto</b></div>
+    <div class="fx">
+      <div class="fx-main"><img id="fxImg" src="p00.jpg" alt=""></div>
+      <div class="fx-info">
+        <div class="pay" style="margin-top:0;border:0;padding:0"><span class="vi">6 cuotas sin interés</span><span class="so">Tarjeta Sol</span><span class="nx">Naranja X</span></div>
+        <h1 id="fxName">Producto</h1>
+        <div class="fx-sk">Vendido y entregado por Mobilar · Garantía oficial</div>
+        <div class="fx-pr">
+          <s id="fxOld"></s>
+          <b><span id="fxPr">$ 000.000</span></b>
+          <div class="fx-cu"><svg><use href="#card"/></svg><span><strong id="fxCu">6 cuotas sin interés</strong> con todas las tarjetas</span><a href="#cuotas" data-go="home">Ver medios de pago</a></div>
+          <div class="fx-cu"><svg><use href="#id"/></svg><span>¿Sin tarjeta? <strong>Crédito personal con tu DNI</strong></span></div>
+        </div>
+        <div class="fx-buy">
+          <div class="qty"><button type="button" data-q="-1">−</button><b>1</b><button type="button" data-q="1">+</button></div>
+          <a class="btn" href="#ficha">Agregar al carrito</a>
+        </div>
+        <a class="fx-wa" href="#ficha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.4A9 9 0 1 1 21 12z"/></svg>¿Tenés dudas? Te asesora un especialista por WhatsApp</a>
+        <div class="ent">
+          <div><i><svg><use href="#truck"/></svg></i><span><b>Envío a domicilio</b>Calculá el costo con tu código postal</span></div>
+          <div><i><svg><use href="#store"/></svg></i><span><b>Retiro en sucursal</b>En cualquiera de nuestros 5 locales</span></div>
+        </div>
+        <div class="fx-acc">
+          <details class="fq" open><summary>Descripción<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></summary><p>Acá va la descripción y la ficha técnica del producto, tal como está cargada en tu tienda.</p></details>
+          <details class="fq"><summary>Envío y retiro<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></summary><p>Despachamos de lunes a viernes. En Gran San Miguel de Tucumán entregamos con flota propia. También podés retirar en la sucursal que elijas presentando DNI y la tarjeta con la que pagaste.</p></details>
+          <details class="fq"><summary>Garantía y servicio técnico<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></summary><p>Todos los productos tienen garantía oficial y contamos con servicio técnico para acompañarte después de la compra.</p></details>
+        </div>
+      </div>
+    </div>
+    <div class="head" style="margin-top:70px"><div><div class="kick">Te puede interesar</div><div class="h2">Más <em>ofertas</em></div></div></div>
+    <div class="rail" id="g4" style="margin-bottom:20px"></div>
+  </div>
+  <div class="fx-bar"><div><small id="fxBarC">6 cuotas sin interés</small><b id="fxBarP">$ 000.000</b></div><a class="btn" href="#ficha">Agregar</a></div>
+  </main>
+
+  <!-- 14 · Pie -->
+  <footer class="foot">
+    <div class="news"><div class="wrap"><b>Recibí las ofertas antes que nadie</b><form onsubmit="return false"><input type="email" placeholder="Tu email"><button class="btn k" type="button">Suscribirme</button></form></div></div>
+    <div class="wrap">
+    <div class="fg">
+      <div><a class="logo" href="#top" data-go="home" aria-label="Mobilar"><img src="logo.png" alt="Mobilar"></a><p>Empresa familiar tucumana con más de 40 años de trayectoria. Electrodomésticos, tecnología, muebles y todo para tu hogar, con envíos a todo el país.</p></div>
+      <div><h4>Comprar</h4><ul><li>Cómo comprar</li><li>Pago y envío</li><li>Promociones bancarias</li><li>Botón de arrepentimiento</li></ul></div>
+      <div><h4>Empresa</h4><ul><li>Sobre nosotros</li><li>Sucursales</li><li>Servicio técnico</li><li>Preguntas frecuentes</li></ul></div>
+      <div><h4>Contacto</h4><ul><li>0381 421-8723</li><li>0381 430-5055</li><li>info@mobilar.com.ar</li><li>Instagram @mobilar_tucuman</li></ul></div>
+    </div>
+    <div class="fb"><span>© 2026 Mobilar · Tucumán</span><span>Diseño y desarrollo: PRAXIS</span></div>
+  </div></footer>
+  <a class="wapp" href="#mapa" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.4z"/></svg></a>
+ </div>
+ </div>
+</div>
+</div>
+<script>
+document.documentElement.classList.add('js');
+const $=id=>document.getElementById(id);
+const P=[["p00", "Lavarropas Automatico Drean 5.5Kg 700Rpm Cs Gris Oscuro", "558.154", "", "", "93.026"], ["p01", "Pileta De Lona Pelopincho 1055 3.00 X 2.00 X 0.75", "275.649", "306.276", "10", "45.942"], ["p02", "Pileta De Lona Pelopincho 1102 3.05 X 0.75", "298.073", "331.192", "10", "49.679"], ["p03", "Pileta Pelopincho 1076 4.45 X 2.25 X 0.80", "453.531", "503.923", "10", "75.589"], ["p04", "Pileta De Lona Pelopincho 1043 2,70X1,60X0,65", "210.534", "233.926", "10", "35.089"], ["p05", "Turbo Circulador Liliana Votr18", "152.599", "", "", "25.433"], ["p06", "Pileta Pelopincho 1020", "101.180", "112.422", "10", "16.863"], ["p07", "Turbo Circulador Liliana 16\" 5 Palas 3 Velocidades Vtf16P", "81.749", "", "", "13.625"], ["p08", "Turbo Circulador Liliana 20\" 3 Palas 3 Velocidades Vtfm20", "185.299", "", "", "30.883"], ["p09", "Notebook Exo 14.1\"/N4020C/4Bg/Ssd128Gb/ Exo Smart Xr2", "407.899", "420.012", "3", "67.983"], ["p10", "Aire Acondicionado Vent. Fedders 3600W Fs 3000Frig", "853.470", "", "", "142.245"], ["p11", "Bordeadora Tramontina 1500W", "103.932", "", "", "17.322"], ["p12", "NOTEBOOK EXO RYZEN 3 3200U /15.6\"/ 8GB/SSD 480GB/ Windows 11", "1.057.517", "", "", "176.253"], ["p13", "AIRE ACOND, SPLIT HITACHI 2700W / 2322 FRIG. On/Off", "729.853", "", "", "121.642"], ["p14", "Aire Acondicionado Split RCA 3350w F/C A Rl3350fc", "773.681", "", "", "128.947"], ["p15", "VENTILADOR DE PIE CRIVEL 30' Metálico Mod.V39", "247.096", "", "", "41.183"], ["p16", "Ventilador De Mesa Liliana 16\" 5 Aspas 3 Velocidades Vsop16", "98.099", "", "", "16.350"], ["p17", "Turbo Circular Liliana 14\" 3 Palas 3 Velocidades Vtfm14", "130.799", "", "", "21.800"], ["p18", "Vent. De Pared Magiclick 20´ 3V 90W Oscilante", "79.054", "", "", "13.176"], ["p19", "Tv Led Noblex 24 Db24X4000", "194.238", "", "", "32.373"], ["p20", "Tv Led Samsung 85 Qn85Q70Aagczb Qled 4K", "3.999.998", "4.249.999", "6", "666.666"], ["p21", "Tv Led Philips 32Phd6910 Hd32Phd6910/77", "382.590", "", "", "63.765"], ["p22", "TV LED NOBLEX 50\" 4K GOOGLE TVDV50x8580", "782.838", "", "", "130.473"], ["p23", "Tv Led Philco 55\" 91Pld55Us55Us25Gh Android Tv", "884.372", "", "", "147.395"], ["p24", "TV LED TCL 32\" 32s5k QLED FHD GOOGLE TV", "396.246", "", "", "66.041"], ["p25", "Tv Led Smart Rca 32\" Google Tv Hd R32Gl100", "375.231", "", "", "62.539"], ["p26", "Microfono Ross Fv-302Inalambrico De Mano", "69.078", "", "", "11.513"], ["p27", "Parlante Bafle Stromberg Dj4004 Bluetooth Tws De 120w", "468.435", "", "", "78.073"], ["p28", "Auricular Global Epbl037 Negro", "26.324", "", "", "4.387"], ["p29", "Parlante Portatil Noblex Psb2000P 60W", "200.697", "208.253", "4", "33.450"], ["p30", "Soporte Para Microfono Samson Mk10Mk10", "70.051", "", "", "11.675"], ["p31", "Bafle Potenciado Rca Joy 215 1600W 24042", "654.816", "", "", "109.136"], ["p32", "Bafle Potenciado Lg Rnc5 Xboom 500W", "779.350", "874.500", "11", "129.892"], ["p33", "Microfono Dinamico Ross Fm-A3 Cable Canon-Canon Color Cromado", "32.529", "", "", "5.422"], ["p34", "Bafle Potenciado Rca Joy 28 8000W 24041", "419.376", "", "", "69.896"], ["p35", "Pack Ross Mixer Potenciado + 2 Bafles + Cable P/Baflepack Dx-8", "1.310.522", "", "", "218.420"], ["p36", "Bafle Potenciado Kioto Tw4000 300W Rms", "671.188", "", "", "111.865"], ["p37", "Bafle Potenciado Kioto Tw2200 120W Rms", "469.745", "", "", "78.291"], ["p38", "Cafetera Express Ultracomb CE 6108 15 Bar", "168.333", "201.999", "17", "28.056"], ["p39", "Exprimidor De Jugo Philips HR-2738 Blanco", "66.804", "", "", "11.134"], ["p40", "Licuadora Moulinex LM2701AR Optimix Plus 2 Litros, 550 W", "79.263", "79.990", "1", "13.211"], ["p41", "Sandwichera Moulinex SM-154180", "49.535", "49.990", "1", "8.256"], ["p42", "Sandwichera Ultracomb SW-2800", "34.415", "36.799", "6", "5.736"], ["p43", "Exprimidor De Jugo Yelmo EX-1303", "29.926", "31.999", "6", "4.988"], ["p44", "Parrilla Grill Atma Pg4720 D/Tapa", "107.296", "", "", "17.883"], ["p45", "PICADORA MOULINEX AD6021 C/LICUADORA 750w", "148.725", "150.090", "1", "24.788"], ["p46", "Balanza Para Cocina Aspen 3417 Kci", "29.628", "", "", "4.938"], ["p47", "Tostadora Yelmo To 3007 1000W", "66.465", "", "", "11.078"], ["p48", "Balanza Para Cocina Yelmo Bl-7001 Digital", "22.510", "24.899", "10", "3.752"], ["p49", "Exprimidor Moulinex Pc3021Ar Vitapress", "42.599", "42.990", "1", "7.100"]];
+P.forEach((p,i)=>p.push(i));
+const ok='<svg><use href="#card"/></svg>';
+const card=(p,k)=>`<a class="card" href="#producto" data-p="${p[6]}"><div class="ph"><img src="${p[0]}.jpg" alt="">${p[4]?`<span class="tag">${p[4]}% OFF</span>`:''}</div><div class="bd"><h3>${p[1]}</h3><div class="pr"><s>${p[3]?'$ '+p[3]:''}</s><b>$ ${p[2]}</b><span class="cu">${ok}6 x $ ${p[5]} sin interés</span></div></div></a>`;
+// categorías
+const C=[['cat4','Climatización'],['cat2','Heladeras'],['cat0','Celulares'],['cat5','Televisores'],['cat6','Cocinas'],['cat7','Colchones y sommiers'],['cat3','Herramientas'],['cat1','Jardín']];
+$('gC').innerHTML=C.map((c,i)=>`<a class="cat rv" style="--i:${i%8}" href="#cb"><div><img src="${c[0]}.jpg" alt=""></div><b>${c[1]}</b></a>`).join('');
+$('gH').innerHTML=card(P[0]);
+$('gO').innerHTML=[1,9,13,20,38,32,2,12,5,22].map(i=>card(P[i])).join('');
+// categorías con banner
+const B=[['h-clim','Climatización',[13,14,10,15,16,17,18,5]],['h-tv','Televisores',[20,22,23,24,21,25,19]],['h-audio','Audio',[32,27,29,31,36,26,28]],['h-cocina','Ayudantes de cocina',[38,39,40,45,44,41,47,42]]];
+$('gB').innerHTML=B.map(b=>`<div class="cb"><img class="rv" src="${b[0]}.jpg" alt="${b[1]}"><div class="head" style="margin-bottom:16px"><div class="h2" style="font-size:26px">${b[1]}</div><a class="link" href="#cb">Ver todo<svg><use href="#ar"/></svg></a></div><div class="rw"><button class="ra l" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 5-7 7 7 7"/></svg></button><div class="rail">${b[2].map(i=>card(P[i])).join('')}</div><button class="ra r" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m9 5 7 7-7 7"/></svg></button></div></div>`).join('');
+$('g4').innerHTML=[9,13,22,38,27,40].map(i=>card(P[i])).join('');
+// reloj de la oferta
+function tick(){const n=new Date(),e=new Date(n);e.setHours(23,59,59);let s=Math.max(0,(e-n)/1000|0);const h=s/3600|0,m=(s%3600)/60|0,x=s%60;$('clk').innerHTML=[[h,'HS'],[m,'MIN'],[x,'SEG']].map(v=>`<span>${String(v[0]).padStart(2,'0')}<small>${v[1]}</small></span>`).join('')}
+tick();setInterval(tick,1000);
+// estrellas y reseñas de ejemplo
+const star='<svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7 .7-5.3 4.8 1.5 7L12 17.5 5.8 21l1.5-7L2 9.3l7-.7z"/></svg>';
+$('gs').innerHTML=star.repeat(5);
+const R=[['G','#5E35B1','Gabriela R.','hace 2 semanas','Compré la heladera en 12 cuotas y me la trajeron al otro día. Muy buena atención en el local de 24 de Septiembre.'],
+ ['M','#00897B','Marcelo T.','hace 1 mes','Me asesoraron muy bien con el aire acondicionado. Precio bueno y lo pude pagar en cuotas sin interés.'],
+ ['L','#E53935','Lucía F.','hace 3 semanas','Hice la compra por la web y retiré en Tafí Viejo. Todo rápido y sin vueltas.'],
+ ['J','#1E88E5','José A.','hace 2 meses','Saqué el crédito con el DNI y en el día me llevé el lavarropas. Siempre cumplen.'],
+ ['S','#F4511E','Silvia M.','hace 1 semana','Una empresa de toda la vida en Tucumán. Atención cálida y mucha variedad.'],
+ ['D','#43A047','Daniel P.','hace 1 mes','Compré un televisor para mi viejo. Excelente precio y la entrega fue puntual.']];
+const T=R.map(r=>`<div class="gr"><div class="gr-h"><i style="background:${r[1]}">${r[0]}</i><div><b>${r[2]}</b><small>${r[3]}</small></div><svg class="g"><use href="#gg"/></svg></div><div class="st">${star.repeat(5)}</div><p>${r[4]}</p></div>`).join('');
+$('mt').innerHTML=T+T;
+// preguntas frecuentes (de su web)
+const F=[['¿Qué cuotas y promociones tienen?','6 cuotas sin interés en todos los productos y hasta 12 cuotas sin interés con Naranja en categorías seleccionadas. Además, promociones con Tarjeta Sol, SuCrédito y Credimas.'],
+ ['¿Dan créditos personales?','Sí, damos créditos a sola firma con DNI. Comunicate por teléfono, WhatsApp o acercate a cualquiera de nuestros locales.'],
+ ['¿Hacen envíos?','Sí, enviamos a todo el país. En Gran San Miguel de Tucumán entregamos con flota propia. Con tu código postal ves el costo antes de pagar.'],
+ ['¿Puedo retirar en una sucursal?','Sí. Elegí la sucursal al comprar y presentá el comprobante, tu DNI y la tarjeta con la que pagaste.'],
+ ['¿Es seguro comprar en la web?','Sí. Los pagos se procesan con plataformas seguras y tus datos se manejan de forma confidencial.']];
+$('fq').innerHTML=F.map((f,i)=>`<details class="fq"${i?'':' open'}><summary>${f[0]}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></summary><p>${f[1]}</p></details>`).join('');
+// carrusel de banners
+const hs=$('hs'),nb=hs.children.length;let hi=0,ht;
+$('hd').innerHTML=Array.from({length:nb},(_,i)=>`<i data-d="${i}"></i>`).join('');
+function go(i){hi=(i+nb)%nb;hs.style.transform=`translateX(-${hi*100}%)`;[...$('hd').children].forEach((d,k)=>d.classList.toggle('on',k===hi));clearTimeout(ht);ht=setTimeout(()=>go(hi+1),5000)}
+go(0);
+// rieles
+document.addEventListener('click',e=>{const a=e.target.closest('.ra');if(a){const r=a.parentElement.querySelector('.rail');r.scrollBy({left:(a.classList.contains('l')?-1:1)*r.clientWidth*.8,behavior:'smooth'})}});
+// aparición
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight)el.classList.add('in')}),1500);
+// videos: siempre muteados, suenan solo con el botón, pausa al salir de pantalla
+const vids=[...document.querySelectorAll('.vid video')];
+const vo=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play().catch(()=>{})}else{v.pause();v.muted=true;v.parentElement.querySelector('.snd').classList.remove('u')}}),{threshold:.35});
+vids.forEach(v=>vo.observe(v));
+document.addEventListener('click',e=>{const b=e.target.closest('.snd');if(!b)return;const v=b.parentElement.querySelector('video');const on=v.muted;vids.forEach(x=>{x.muted=true;x.parentElement.querySelector('.snd').classList.remove('u')});if(on){v.muted=false;v.play().catch(()=>{});b.classList.add('u')}});
+const callar=()=>vids.forEach(v=>{v.pause();v.muted=true;v.parentElement.querySelector('.snd').classList.remove('u')});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)callar()});addEventListener('pagehide',callar);
+// ficha
+function abrir(i){const p=P[i]||P[0];
+  $('fxName').textContent=$('fxName2').textContent=p[1];$('fxImg').src=p[0]+'.jpg';
+  $('fxOld').textContent=p[3]?'$ '+p[3]:'';$('fxPr').textContent='$ '+p[2];$('fxBarP').textContent='$ '+p[2];
+  $('fxPr').parentElement.querySelectorAll('.off').forEach(s=>s.remove());if(p[4])$('fxPr').insertAdjacentHTML('afterend',`<span class="off">${p[4]}% OFF</span>`);
+  $('fxCu').textContent=`6 cuotas sin interés de $ ${p[5]}`;$('fxBarC').textContent=`6 x $ ${p[5]} sin interés`;}
+function vista(v,i){const f=v==='ficha';$('home').hidden=f;$('ficha').hidden=!f;if(f)callar();
+  document.querySelectorAll('.seg.pg button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+  if(f)abrir(i??9);
+  document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
+  $('screen').scrollTop=0;}
+document.addEventListener('click',e=>{
+  const h=e.target.closest('[data-h]');if(h){go(hi+ +h.dataset.h);return}
+  const d=e.target.closest('[data-d]');if(d){go(+d.dataset.d);return}
+  const c=e.target.closest('a.card');if(c){e.preventDefault();vista('ficha',+c.dataset.p);return}
+  const g=e.target.closest('[data-go="home"]');if(g){e.preventDefault();vista('home');return}
+  const q=e.target.closest('[data-q]');if(q){const b=q.parentElement.querySelector('b');b.textContent=Math.max(1,+b.textContent+ +q.dataset.q);return}
+  const a=e.target.closest('a[href^="#"]');if(a&&!$('home').hidden){const id=a.getAttribute('href').slice(1);const el=id&&$(id);if(el){e.preventDefault();$('screen').scrollTo({top:el.offsetTop-130,behavior:'smooth'})}}
+  else if(a)e.preventDefault();
+});
+document.querySelectorAll('.seg.pg button').forEach(b=>b.addEventListener('click',()=>vista(b.dataset.v)));
+const dev=$('device');
+document.querySelectorAll('.seg:not(.pg) button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.seg:not(.pg) button').forEach(x=>x.classList.toggle('on',x===b));dev.classList.toggle('mob',b.dataset.m==='mob');$('screen').scrollTop=0}));
+const H=location.hash;if(H.includes('celular'))document.querySelector('[data-m=mob]').click();if(H.includes('producto'))vista('ficha',9);
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='m'||e.key==='M')document.querySelector('.seg:not(.pg) button:not(.on)').click()});
+</script>
+</body>
+</html>
