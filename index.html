@@ -136,7 +136,13 @@ input,button{font:inherit;font-size:16px}
 .cu{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:12.5px;color:var(--ok);font-weight:600}
 .cu svg{width:15px;height:15px;flex:none}
 /* destacado + ofertas */
-.of{display:grid;grid-template-columns:300px 1fr;gap:16px}
+.of{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start}
+.tabs{display:flex;gap:8px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{all:unset;cursor:pointer;flex:none;height:40px;padding:0 18px;border-radius:999px;background:var(--gr);font:700 13px Montserrat;transition:background .2s,color .2s}
+.tabs button.on{background:var(--ink);color:#fff}
+#gO{transition:opacity .25s}#gO.fade{opacity:0}
+.of .ra{top:calc(54px + 30%)}
 .hot{background:var(--y);border-radius:20px;padding:22px;display:flex;flex-direction:column}
 .hot .kick{color:var(--ink)}.hot .kick:before{background:var(--ink)}
 .hot h3{font:900 26px/1.05 Montserrat;letter-spacing:-.02em}
@@ -146,7 +152,7 @@ input,button{font:inherit;font-size:16px}
 .clock span small{display:block;font:500 9px Inter;opacity:.7;letter-spacing:.06em}
 /* por qué Mobilar */
 .why{background:var(--y);position:relative;overflow:hidden}
-.why-in{display:grid;grid-template-columns:1fr 1.05fr;column-gap:56px;grid-template-areas:"t r" "z r" "n r";align-items:start}
+.why-in{display:grid;grid-template-columns:1fr 1.05fr;column-gap:56px;grid-template-areas:"t r";align-items:center}
 .why-top{display:contents}
 .why-top>div:first-child{grid-area:t}
 .reels{grid-area:r;align-self:center}
@@ -194,6 +200,7 @@ input,button{font:inherit;font-size:16px}
 .gr p{margin-top:10px;font-size:14px;line-height:1.6;color:#3D3D3D}
 .tnote{text-align:center;font-size:12px;color:var(--mu);margin-top:20px}
 /* categorías con su banner */
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .cb+.cb{margin-top:56px}
 .cb>img{width:100%;display:block;border-radius:18px;margin-bottom:18px}
 /* video + texto x2 */
@@ -231,16 +238,27 @@ input,button{font:inherit;font-size:16px}
 /* sucursales */
 .map-g{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch}
 .suc{display:grid;gap:10px;margin-top:22px}
-.suc div{display:flex;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--ln);border-radius:14px}
-.suc div.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.suc button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:14px;align-items:center;padding:13px 16px;border:1px solid var(--ln);border-radius:14px;transition:border-color .2s,box-shadow .2s}
+.suc button:hover{border-color:#BDBDBD}
+.suc em{margin-left:auto;font-style:normal;font:700 12px Inter;color:var(--rd);white-space:nowrap}
+.suc button.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.suc button.on i{background:var(--ink);color:var(--y)}
 .suc i{flex:none;width:38px;height:38px;border-radius:12px;background:var(--y);display:grid;place-items:center}
 .suc i svg{width:19px;height:19px}
 .suc b{display:block;font:800 14px Montserrat}
-.suc span{font-size:13px;color:var(--mu)}
+.suc span{font-size:13px;color:var(--mu);display:block}
+.suc small{font-size:12px;color:var(--mu)}
 .map-f{border-radius:20px;overflow:hidden;min-height:420px;background:var(--gr2)}
 .map-f iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
+/* medios de pago */
+.pgs{padding:60px 0 0}
+.pgs-h{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:24px}
+.pgs-h p{max-width:420px;font-size:14px;line-height:1.6;color:var(--mu)}
+.pgs-m{overflow:hidden;background:#fff;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln);padding:14px 0}
+.pgs-t{display:flex;width:max-content;animation:mq 40s linear infinite}
+.pgs-t img{height:56px;width:auto;display:block}
 /* pie */
-.foot{background:var(--ink);color:#B9B9B9;padding:0 0 26px;margin-top:76px}
+.foot{background:var(--ink);color:#B9B9B9;padding:0 0 26px;margin-top:0}
 .news{background:var(--y);color:var(--ink)}
 .news .wrap{display:flex;align-items:center;gap:30px;padding-top:28px;padding-bottom:28px}
 .news b{font:900 22px/1.15 Montserrat;letter-spacing:-.02em}
@@ -285,10 +303,35 @@ input,button{font:inherit;font-size:16px}
 .ent b{display:block;font-size:13px;color:var(--ink);font-weight:700}
 .fx-acc{margin-top:18px;border-top:1px solid var(--ln)}
 .fx-bar{display:none}
+/* embudo de precios (estilo Elike) */
+.ep{margin-top:20px;border:1px solid var(--ln);border-radius:20px;overflow:hidden;background:#fff}
+.ep-top{display:flex;align-items:center;gap:10px;padding:16px 22px 0;min-height:16px}
+.ep-top s{color:#9A9A9A;font-size:15px}
+.ep-off{font:800 12px Montserrat;background:var(--rd);color:#fff;padding:4px 9px;border-radius:7px}.ep-off:empty{display:none}
+.ep-paso{display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:center;padding:14px 22px}
+.ep-et{grid-column:1/-1;font:700 11px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+.ep-1 .ep-n{grid-column:1/-1;font:900 50px/1.05 Montserrat;letter-spacing:-.03em}
+.ep-ico{grid-row:1/4;width:46px;height:46px;border-radius:14px;display:grid;place-items:center}
+.ep-ico svg{width:23px;height:23px}
+.ep-2,.ep-3{grid-template-columns:46px 1fr;border-top:1px solid var(--ln)}
+.ep-2 .ep-et,.ep-3 .ep-et,.ep-2 .ep-sub,.ep-3 .ep-sub,.ep-n,.ep-n3{grid-column:2}
+.ep-2{position:relative;overflow:hidden;background:#EAF6EE;border-top-color:rgba(17,136,58,.2)}
+.ep-2 .ep-ico{background:var(--ok);color:#fff}
+.ep-2 .ep-et{color:var(--ok)}
+.ep-2 .ep-n{font:900 32px/1.1 Montserrat;color:var(--ok);letter-spacing:-.02em}
+.ep-2:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-100%);animation:luz 3.2s ease-in-out infinite}
+@keyframes luz{60%,100%{transform:translateX(100%)}}
+.ep-sub{font-size:13px;color:#3A3A3A;margin-top:2px}
+.ep-3 .ep-ico{background:var(--y);color:var(--ink)}
+.ep-n3{font:800 18px/1.2 Montserrat}
+.ep-sello{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 22px;background:var(--gr);border-top:1px solid var(--ln);font-size:13px}
+.ep-sello svg{width:20px;height:20px;color:#C9961A}
+.ep-sello .st svg{width:14px;height:14px;color:#FBBC04}
+.ep-sello small{margin-left:auto;color:var(--mu);font-size:12px}
 /* aparición */
 .js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0)*90ms)}
 .js .rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}.mt,.ann-t{animation:none}}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}.mt,.ann-t,.pgs-t,.ep-2:after{animation:none}}
 /* ---------- celular (por ancho del sitio) ---------- */
 @container (max-width:760px){
   .wrap{padding:0 16px}
@@ -307,6 +350,7 @@ input,button{font:inherit;font-size:16px}
   .nav .wrap::-webkit-scrollbar{display:none}
   .nav .all,.nav .r{display:none}
   .ha{display:none}
+  .hs img{aspect-ratio:2.2/1;object-position:var(--op,0%) center}
   .hd{bottom:6px}.hd i{width:6px;height:6px}.hd i.on{width:18px}
   .bens{padding-top:14px}
   .ben-g{grid-template-columns:1fr 1fr;gap:8px}
@@ -325,7 +369,8 @@ input,button{font:inherit;font-size:16px}
   .pr s{font-size:11px;min-height:15px}.pr b{font-size:17px}
   .cu{font-size:11px;gap:4px}.cu svg{width:13px;height:13px}
   .tag{top:8px;left:8px;font-size:10px;padding:4px 7px}
-  .of{grid-template-columns:1fr}
+  .of{grid-template-columns:minmax(0,1fr)}.of>*{min-width:0}
+  .tabs{margin:0 -16px 12px;padding:0 16px}.tabs button{height:36px;padding:0 14px;font-size:12px}
   .hot{padding:16px;border-radius:16px}
   .hot .card{display:grid;grid-template-columns:42% 1fr}
   .hot .card .bd{border-top:0;border-left:1px solid var(--gr)}
@@ -335,6 +380,7 @@ input,button{font:inherit;font-size:16px}
   .why .h2{font-size:28px}
   .why-top{display:grid;grid-template-columns:1fr 40%;gap:14px;align-items:center}
   .why-top .sub{font-size:13px;line-height:1.5;margin-top:8px}
+  .why-top .btn{height:auto;min-height:40px;padding:10px 14px;font-size:11px;white-space:normal;margin-top:14px!important}
   .why-top>div:first-child{grid-area:auto}
   .reels{display:contents}
   .reels .vid:not(:first-child){display:none}
@@ -355,6 +401,7 @@ input,button{font:inherit;font-size:16px}
   .gr{width:280px}
   .cb+.cb{margin-top:40px}
   .cb>img{border-radius:12px;margin-bottom:12px}
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
   /* video + texto lado a lado en celular */
   .vt{grid-template-columns:1fr 40%;gap:14px}.vt.rev{grid-template-columns:40% 1fr}
   .vt.rev .vid{order:0}
@@ -369,8 +416,10 @@ input,button{font:inherit;font-size:16px}
   .fq p{padding-right:0;font-size:14px}
   .cta-f{grid-template-columns:1fr;padding:34px 20px;border-radius:20px;gap:22px}.cta-f .h2{font-size:27px}
   .map-g{grid-template-columns:1fr;gap:16px}
+  .suc em{display:none}
+  .suc button{padding:11px 13px}
   .map-f,.map-f iframe{min-height:260px}
-  .foot{margin-top:50px}
+  .pgs{padding-top:44px}.pgs-h{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:16px}.pgs-h p{font-size:13px}.pgs-t img{height:40px}.pgs-m{padding:10px 0}
   .news .wrap{flex-direction:column;align-items:stretch;gap:14px}
   .news b{font-size:18px}.news form{margin-left:0;max-width:none}.news .btn{padding:0 18px}
   .fg{grid-template-columns:1fr 1fr;gap:30px}.fg>div:first-child{grid-column:1/-1}
@@ -380,8 +429,8 @@ input,button{font:inherit;font-size:16px}
   .fx{grid-template-columns:1fr;gap:18px}
   .fx-main{position:static;padding:20px;border-radius:16px}
   .fx-info h1{font-size:21px}
-  .fx-pr b{font-size:30px}
-  .ent{grid-template-columns:1fr}
+  .ep-1 .ep-n{font-size:38px}.ep-2 .ep-n{font-size:26px}.ep-n3{font-size:15px}.ep-paso{padding:12px 16px}.ep-top{padding:14px 16px 0}.ep-sello{padding:10px 16px}.ep-sello small{margin-left:0;flex:0 0 100%}
+  .ent{grid-template-columns:1fr 1fr}.ent div{flex-direction:column;gap:8px;padding:12px}
   .fx-buy{display:none}
   .fx-bar{display:flex;position:sticky;bottom:0;z-index:7;align-items:center;justify-content:space-between;gap:12px;background:#fff;border-top:1px solid var(--ln);padding:10px 16px;box-shadow:0 -8px 24px -12px rgba(0,0,0,.25)}
   .fx-bar small{display:block;font-size:11px;color:var(--ok);font-weight:600}
@@ -439,7 +488,7 @@ input,button{font:inherit;font-size:16px}
     <div class="hdr-t"><div class="wrap">
       <svg class="burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       <a class="logo" href="#top" data-go="home" aria-label="Mobilar"><img src="logo.png" alt="Mobilar"></a>
-      <label class="srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Buscá entre más de 5.500 productos"><button type="button">Buscar</button></label>
+      <label class="srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Buscar"><button type="button">Buscar</button></label>
       <div class="hi">
         <a class="opt" href="#mapa"><svg><use href="#pin"/></svg><span>Sucursales<small>5 en Tucumán</small></span></a>
         <a class="opt" href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span>Mi cuenta<small>Ingresá</small></span></a>
@@ -457,7 +506,7 @@ input,button{font:inherit;font-size:16px}
   <!-- 3 · Banner principal: sus banners en carrusel -->
   <section class="hero" id="top">
     <div class="hs" id="hs">
-      <img src="b1.jpg" alt="Todo para tu hogar"><img src="b2.jpg" alt="La financiación correcta te da comodidad"><img src="b3.jpg" alt="6 cuotas sin interés en todos los productos"><img src="b4.jpg" alt="Que el precio no te frene"><img src="b5.jpg" alt="Stanley"><img src="b6.jpg" alt="Todo para tu comercio">
+      <img src="b1.jpg" alt="Todo para tu hogar" style="--op:0%"><img src="b2.jpg" alt="La financiación correcta te da comodidad" style="--op:0%"><img src="b3.jpg" alt="6 cuotas sin interés en todos los productos" style="--op:0%"><img src="b4.jpg" alt="Que el precio no te frene" style="--op:69%"><img src="b5.jpg" alt="Stanley" style="--op:38%"><img src="b6.jpg" alt="Todo para tu comercio" style="--op:11%">
     </div>
     <button class="ha l" data-h="-1" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 5-7 7 7 7"/></svg></button>
     <button class="ha r" data-h="1" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m9 5 7 7-7 7"/></svg></button>
@@ -472,7 +521,6 @@ input,button{font:inherit;font-size:16px}
       <div class="ben rv" style="--i:2"><i><svg><use href="#truck"/></svg></i><div><h4>Envíos a todo el país</h4><p>Con flota propia en Gran Tucumán</p></div></div>
       <div class="ben rv" style="--i:3"><i><svg><use href="#store"/></svg></i><div><h4>Retirá en tu sucursal</h4><p>5 locales en Tucumán</p></div></div>
     </div>
-    <div class="pay rv"><b>Pagá como quieras:</b><span class="vi">VISA</span><span class="mc">Mastercard</span><span class="nx">Naranja X</span><span class="so">Tarjeta Sol</span><span class="su">SuCrédito</span><span class="cr">Credimas</span><span class="mp">Mercado Pago</span><small>Precios exclusivos de la tienda online</small></div>
   </div></section>
 
   <!-- 5 · Categorías -->
@@ -489,7 +537,7 @@ input,button{font:inherit;font-size:16px}
         <div class="clock" id="clk"></div>
         <div id="gH"></div>
       </div>
-      <div class="rw"><button class="ra l" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 5-7 7 7 7"/></svg></button><div class="rail" id="gO"></div><button class="ra r" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m9 5 7 7-7 7"/></svg></button></div>
+      <div class="rw"><div class="tabs" id="tabs"></div><button class="ra l" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 5-7 7 7 7"/></svg></button><div class="rail" id="gO"></div><button class="ra r" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m9 5 7 7-7 7"/></svg></button></div>
     </div>
   </div></section>
 
@@ -501,24 +549,13 @@ input,button{font:inherit;font-size:16px}
           <div class="kick rv">Por qué elegirnos</div>
           <div class="h2 rv">Por qué Mobilar es <em>la mejor opción</em> en Tucumán</div>
           <p class="sub rv" style="--i:1">Somos una empresa familiar tucumana con más de 40 años equipando casas. Te asesoramos, te financiamos y te lo llevamos.</p>
+          <a class="btn k rv" style="--i:2;margin-top:26px" href="#mapa">Conocé nuestras sucursales</a>
         </div>
         <div class="reels" id="reels">
           <div class="vid rv"><video src="v-todo.mp4" poster="v-todo.jpg" muted loop playsinline preload="metadata"></video><button class="snd" aria-label="Activar sonido"><svg class="off"><use href="#mute"/></svg><svg class="on"><use href="#vol"/></svg></button><div class="lbl">Hay de todo<small>Recorré una de nuestras sucursales</small></div></div>
           <div class="vid rv" style="--i:1"><video src="v-cuotas.mp4" poster="v-cuotas.jpg" muted loop playsinline preload="metadata"></video><button class="snd" aria-label="Activar sonido"><svg class="off"><use href="#mute"/></svg><svg class="on"><use href="#vol"/></svg></button><div class="lbl">12 cuotas sin interés<small>Muebles, colchones y regalería</small></div></div>
           <div class="vid rv" style="--i:2"><video src="v-tafi.mp4" poster="v-tafi.jpg" muted loop playsinline preload="metadata"></video><button class="snd" aria-label="Activar sonido"><svg class="off"><use href="#mute"/></svg><svg class="on"><use href="#vol"/></svg></button><div class="lbl">Te quedamos cerca<small>Sucursal Tafí Viejo · Av. Alem 98</small></div></div>
         </div>
-      </div>
-      <div class="rz">
-        <div class="rv"><i><svg><use href="#medal"/></svg></i><p><b>Más de 40 años en Tucumán</b><span>Trayectoria, prestigio y confianza de una empresa familiar.</span></p></div>
-        <div class="rv" style="--i:1"><i><svg><use href="#card"/></svg></i><p><b>La mejor financiación</b><span>Cuotas sin interés con tus tarjetas o crédito personal con DNI.</span></p></div>
-        <div class="rv" style="--i:2"><i><svg><use href="#phone"/></svg></i><p><b>Te asesora un especialista</b><span>Venta telefónica de lunes a viernes de 10 a 19 h.</span></p></div>
-        <div class="rv" style="--i:3"><i><svg><use href="#tool"/></svg></i><p><b>Servicio técnico</b><span>Te acompañamos también después de la compra.</span></p></div>
-      </div>
-      <div class="nums rv">
-        <div><b data-n="40">+40</b><span>años de trayectoria</span></div>
-        <div><b data-n="5500">+5.500</b><span>productos online</span></div>
-        <div><b data-n="5">5</b><span>sucursales en Tucumán</span></div>
-        <div><b>+7.800</b><span>seguidores en Instagram</span></div>
       </div>
     </div>
   </div>
@@ -537,7 +574,6 @@ input,button{font:inherit;font-size:16px}
       </div>
     </div>
     <div class="marq"><div class="mt" id="mt"></div></div>
-    <p class="tnote">Reseñas de ejemplo: en tu web se muestran las reales de tu perfil de Google.</p>
   </section>
 
   <!-- 9 · Categorías con sus banners -->
@@ -596,15 +632,9 @@ input,button{font:inherit;font-size:16px}
   <section class="sec" id="mapa" style="padding-top:0"><div class="wrap map-g">
     <div>
       <div class="kick">Sucursales</div><div class="h2">Visitanos en <em>Tucumán</em></div>
-      <div class="suc">
-        <div class="on"><i><svg><use href="#pin"/></svg></i><p><b>Casa central</b><span>24 de Septiembre 221 · San Miguel de Tucumán</span></p></div>
-        <div><i><svg><use href="#pin"/></svg></i><p><b>Tafí Viejo</b><span>Av. Alem 98</span></p></div>
-        <div><i><svg><use href="#pin"/></svg></i><p><b>Banda del Río Salí</b><span>Sucursal Banda del Río Salí</span></p></div>
-        <div><i><svg><use href="#pin"/></svg></i><p><b>Bella Vista</b><span>Sucursal Bella Vista</span></p></div>
-        <div><i><svg><use href="#truck"/></svg></i><p><b>Centro de distribución</b><span>Parque Industrial Tucumán</span></p></div>
-      </div>
+      <div class="suc" id="suc"></div>
     </div>
-    <div class="map-f"><iframe title="Mapa" loading="lazy" src="https://www.google.com/maps?q=24+de+Septiembre+221,+San+Miguel+de+Tucum%C3%A1n&z=15&output=embed"></iframe></div>
+    <div class="map-f"><iframe id="mapf" title="Mapa" src="about:blank"></iframe></div>
   </div></section>
   </div><!-- /home -->
 
@@ -614,14 +644,14 @@ input,button{font:inherit;font-size:16px}
     <div class="fx">
       <div class="fx-main"><img id="fxImg" src="p00.jpg" alt=""></div>
       <div class="fx-info">
-        <div class="pay" style="margin-top:0;border:0;padding:0"><span class="vi">6 cuotas sin interés</span><span class="so">Tarjeta Sol</span><span class="nx">Naranja X</span></div>
         <h1 id="fxName">Producto</h1>
         <div class="fx-sk">Vendido y entregado por Mobilar · Garantía oficial</div>
-        <div class="fx-pr">
-          <s id="fxOld"></s>
-          <b><span id="fxPr">$ 000.000</span></b>
-          <div class="fx-cu"><svg><use href="#card"/></svg><span><strong id="fxCu">6 cuotas sin interés</strong> con todas las tarjetas</span><a href="#cuotas" data-go="home">Ver medios de pago</a></div>
-          <div class="fx-cu"><svg><use href="#id"/></svg><span>¿Sin tarjeta? <strong>Crédito personal con tu DNI</strong></span></div>
+        <div class="ep">
+          <div class="ep-top"><s id="fxOld"></s><span class="ep-off" id="fxOff"></span></div>
+          <div class="ep-paso ep-1"><span class="ep-et">Precio</span><span class="ep-n" id="fxPr">$ 000.000</span></div>
+          <div class="ep-paso ep-2"><span class="ep-ico"><svg><use href="#card"/></svg></span><span class="ep-et">Mejor opción · sin interés</span><span class="ep-n" id="fxCuV">$ 00.000</span><span class="ep-sub" id="fxCu">6 cuotas sin interés de $ 00.000 por mes</span></div>
+          <div class="ep-paso ep-3"><span class="ep-ico"><svg><use href="#id"/></svg></span><span class="ep-et">¿Sin tarjeta?</span><span class="ep-n3">Crédito personal con tu DNI</span><span class="ep-sub">A sola firma, en el local o por WhatsApp</span></div>
+          <div class="ep-sello"><svg><use href="#medal"/></svg><b>Garantía oficial</b><span class="st" id="fxSt"></span><small>Más de 40 años en Tucumán</small></div>
         </div>
         <div class="fx-buy">
           <div class="qty"><button type="button" data-q="-1">−</button><b>1</b><button type="button" data-q="1">+</button></div>
@@ -631,6 +661,8 @@ input,button{font:inherit;font-size:16px}
         <div class="ent">
           <div><i><svg><use href="#truck"/></svg></i><span><b>Envío a domicilio</b>Calculá el costo con tu código postal</span></div>
           <div><i><svg><use href="#store"/></svg></i><span><b>Retiro en sucursal</b>En cualquiera de nuestros 5 locales</span></div>
+          <div><i><svg><use href="#tool"/></svg></i><span><b>Servicio técnico</b>Te acompañamos después de comprar</span></div>
+          <div><i><svg><use href="#phone"/></svg></i><span><b>Asesor especialista</b>Lunes a viernes de 10 a 19 h</span></div>
         </div>
         <div class="fx-acc">
           <details class="fq" open><summary>Descripción<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></summary><p>Acá va la descripción y la ficha técnica del producto, tal como está cargada en tu tienda.</p></details>
@@ -644,6 +676,11 @@ input,button{font:inherit;font-size:16px}
   </div>
   <div class="fx-bar"><div><small id="fxBarC">6 cuotas sin interés</small><b id="fxBarP">$ 000.000</b></div><a class="btn" href="#ficha">Agregar</a></div>
   </main>
+
+  <!-- Medios de pago: cinta que corre sola -->
+  <section class="pgs" id="pagos"><div class="wrap pgs-h"><div><div class="kick">Medios de pago</div><div class="h2">Pagá <em>como quieras</em></div></div><p>Tarjetas de crédito y débito, Tarjeta Sol, SuCrédito, Naranja X, Credimas, Mercado Pago y crédito personal con tu DNI.</p></div>
+    <div class="pgs-m"><div class="pgs-t"><img src="pagos.jpg" alt="Medios de pago"><img src="pagos.jpg" alt=""><img src="pagos.jpg" alt=""><img src="pagos.jpg" alt=""></div></div>
+  </section>
 
   <!-- 14 · Pie -->
   <footer class="foot">
@@ -673,17 +710,21 @@ const card=(p,k)=>`<a class="card" href="#producto" data-p="${p[6]}"><div class=
 const C=[['cat4','Climatización'],['cat2','Heladeras'],['cat0','Celulares'],['cat5','Televisores'],['cat6','Cocinas'],['cat7','Colchones y sommiers'],['cat3','Herramientas'],['cat1','Jardín']];
 $('gC').innerHTML=C.map((c,i)=>`<a class="cat rv" style="--i:${i%8}" href="#cb"><div><img src="${c[0]}.jpg" alt=""></div><b>${c[1]}</b></a>`).join('');
 $('gH').innerHTML=card(P[0]);
-$('gO').innerHTML=[1,9,13,20,38,32,2,12,5,22].map(i=>card(P[i])).join('');
+const TB=[['Todas',[1,9,13,20,38,32,2,12,5,22]],['Climatización',[13,14,10,5,15,16,17,8]],['Televisores',[20,22,23,24,25,21,19]],['Audio',[32,29,27,31,36,37,26,28]],['Cocina',[38,40,45,42,41,43,48,44]],['Tecnología',[9,12,20,22]],['Jardín y verano',[1,2,3,4,6,11]]];
+function tab(i){const o=$('gO');o.classList.add('fade');setTimeout(()=>{o.innerHTML=TB[i][1].map(k=>card(P[k])).join('');o.scrollLeft=0;o.classList.remove('fade')},200);[...$('tabs').children].forEach((b,k)=>b.classList.toggle('on',k===i))}
+$('tabs').innerHTML=TB.map((t,i)=>`<button type="button" data-t="${i}">${t[0]}</button>`).join('');
+$('gO').innerHTML=TB[0][1].map(k=>card(P[k])).join('');$('tabs').children[0].classList.add('on');
+document.addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(b)tab(+b.dataset.t)});
 // categorías con banner
-const B=[['h-clim','Climatización',[13,14,10,15,16,17,18,5]],['h-tv','Televisores',[20,22,23,24,21,25,19]],['h-audio','Audio',[32,27,29,31,36,26,28]],['h-cocina','Ayudantes de cocina',[38,39,40,45,44,41,47,42]]];
-$('gB').innerHTML=B.map(b=>`<div class="cb"><img class="rv" src="${b[0]}.jpg" alt="${b[1]}"><div class="head" style="margin-bottom:16px"><div class="h2" style="font-size:26px">${b[1]}</div><a class="link" href="#cb">Ver todo<svg><use href="#ar"/></svg></a></div><div class="rw"><button class="ra l" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 5-7 7 7 7"/></svg></button><div class="rail">${b[2].map(i=>card(P[i])).join('')}</div><button class="ra r" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m9 5 7 7-7 7"/></svg></button></div></div>`).join('');
+const B=[['h-clim','Climatización',[13,14,10,15,16,17,18,5]],['h-tv','Televisores',[20,22,23,24,21,25,19,9]],['h-audio','Audio',[32,27,29,31,36,37,26,28]],['h-cocina','Ayudantes de cocina',[38,39,40,45,44,41,47,42]]];
+$('gB').innerHTML=B.map(b=>`<div class="cb"><img class="rv" src="${b[0]}.jpg" alt="${b[1]}"><div class="head" style="margin-bottom:16px"><div class="h2" style="font-size:26px">${b[1]}</div><a class="link" href="#cb">Ver todo<svg><use href="#ar"/></svg></a></div><div class="grid">${b[2].map(i=>card(P[i])).join('')}</div></div>`).join('');
 $('g4').innerHTML=[9,13,22,38,27,40].map(i=>card(P[i])).join('');
 // reloj de la oferta
 function tick(){const n=new Date(),e=new Date(n);e.setHours(23,59,59);let s=Math.max(0,(e-n)/1000|0);const h=s/3600|0,m=(s%3600)/60|0,x=s%60;$('clk').innerHTML=[[h,'HS'],[m,'MIN'],[x,'SEG']].map(v=>`<span>${String(v[0]).padStart(2,'0')}<small>${v[1]}</small></span>`).join('')}
 tick();setInterval(tick,1000);
 // estrellas y reseñas de ejemplo
 const star='<svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7 .7-5.3 4.8 1.5 7L12 17.5 5.8 21l1.5-7L2 9.3l7-.7z"/></svg>';
-$('gs').innerHTML=star.repeat(5);
+$('gs').innerHTML=star.repeat(5);$('fxSt').innerHTML=star.repeat(5);
 const R=[['G','#5E35B1','Gabriela R.','hace 2 semanas','Compré la heladera en 12 cuotas y me la trajeron al otro día. Muy buena atención en el local de 24 de Septiembre.'],
  ['M','#00897B','Marcelo T.','hace 1 mes','Me asesoraron muy bien con el aire acondicionado. Precio bueno y lo pude pagar en cuotas sin interés.'],
  ['L','#E53935','Lucía F.','hace 3 semanas','Hice la compra por la web y retiré en Tafí Viejo. Todo rápido y sin vueltas.'],
@@ -699,6 +740,16 @@ const F=[['¿Qué cuotas y promociones tienen?','6 cuotas sin interés en todos 
  ['¿Puedo retirar en una sucursal?','Sí. Elegí la sucursal al comprar y presentá el comprobante, tu DNI y la tarjeta con la que pagaste.'],
  ['¿Es seguro comprar en la web?','Sí. Los pagos se procesan con plataformas seguras y tus datos se manejan de forma confidencial.']];
 $('fq').innerHTML=F.map((f,i)=>`<details class="fq"${i?'':' open'}><summary>${f[0]}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></summary><p>${f[1]}</p></details>`).join('');
+// sucursales (de su web): cada una se ve en el mapa
+const SU=[['Casa central','24 de Septiembre 221','San Miguel de Tucumán','(0381) 421-8723',-26.8315,-65.2006],
+ ['Sucursal Mendoza','Mendoza 477','San Miguel de Tucumán','(0381) 431-0000',-26.828095,-65.203747],
+ ['Sucursal Tafí Viejo','Av. Alem 98','Tafí Viejo','(0381) 461-4441',-26.7312331,-65.255274],
+ ['Sucursal Banda del Río Salí','Av. San Martín 148','Banda del Río Salí','(0381) 484-8243',-26.83817,-65.1664],
+ ['Sucursal Bella Vista','Av. Manuel García Fernández 281','Bella Vista','(0381) 453-3811',-27.03201,-65.304906],
+ ['Centro de distribución','Av. Circunvalación · Ruta 9 km 1296','San Miguel de Tucumán','(0381) 453-0609',-26.81028,-65.16583]];
+$('suc').innerHTML=SU.map((x,i)=>`<button type="button" data-s="${i}"><i><svg><use href="#${i===5?'truck':'pin'}"/></svg></i><p><b>${x[0]}</b><span>${x[1]} · ${x[2]}</span><small>${x[3]}</small></p><em>Ver en el mapa</em></button>`).join('');
+function suc(i){const x=SU[i];$('mapf').src=`https://www.google.com/maps?q=${x[4]},${x[5]}&z=16&output=embed`;[...$('suc').children].forEach((b,k)=>b.classList.toggle('on',k===i))}
+suc(0);document.addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(b)suc(+b.dataset.s)});
 // carrusel de banners
 const hs=$('hs'),nb=hs.children.length;let hi=0,ht;
 $('hd').innerHTML=Array.from({length:nb},(_,i)=>`<i data-d="${i}"></i>`).join('');
@@ -720,9 +771,9 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)callar()});
 // ficha
 function abrir(i){const p=P[i]||P[0];
   $('fxName').textContent=$('fxName2').textContent=p[1];$('fxImg').src=p[0]+'.jpg';
-  $('fxOld').textContent=p[3]?'$ '+p[3]:'';$('fxPr').textContent='$ '+p[2];$('fxBarP').textContent='$ '+p[2];
-  $('fxPr').parentElement.querySelectorAll('.off').forEach(s=>s.remove());if(p[4])$('fxPr').insertAdjacentHTML('afterend',`<span class="off">${p[4]}% OFF</span>`);
-  $('fxCu').textContent=`6 cuotas sin interés de $ ${p[5]}`;$('fxBarC').textContent=`6 x $ ${p[5]} sin interés`;}
+  $('fxOld').textContent=p[3]?'$ '+p[3]:'';$('fxOff').textContent=p[4]?p[4]+'% OFF':'';
+  $('fxPr').textContent='$ '+p[2];$('fxBarP').textContent='$ '+p[2];
+  $('fxCuV').textContent='$ '+p[5]+' por mes';$('fxCu').textContent='En 6 cuotas sin interés con todas las tarjetas';$('fxBarC').textContent=`6 x $ ${p[5]} sin interés`;}
 function vista(v,i){const f=v==='ficha';$('home').hidden=f;$('ficha').hidden=!f;if(f)callar();
   document.querySelectorAll('.seg.pg button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
   if(f)abrir(i??9);
