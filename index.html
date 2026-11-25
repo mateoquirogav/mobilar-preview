@@ -423,31 +423,58 @@ input,button{font:inherit;font-size:16px}
 .xb{all:unset;cursor:pointer;box-sizing:border-box;text-align:center;height:50px;line-height:50px;border-radius:6px;background:var(--rd);color:#fff;font:600 15px Inter}
 .xb.o{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
 .xb.full{display:block;width:100%;margin-top:12px}
-.ct{position:absolute;top:0;right:0;bottom:0;width:min(420px,100%);background:#fff;display:flex;flex-direction:column;animation:sl .35s cubic-bezier(.2,.8,.2,1)}
-.ct-h{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--ln)}
-.ct-h b{font:800 17px Montserrat}.ct-h span{color:var(--mu);font-weight:600}
-.ct-b{flex:1;overflow:auto;padding:4px 18px 14px}
-.ci{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--ln)}
-.ci img{width:64px;height:64px;object-fit:contain;border:1px solid var(--ln);border-radius:8px}
-.ci b{font:600 12.5px/1.3 Inter;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.ci small{display:block;font-size:11.5px;color:var(--ok);font-weight:600;margin-top:3px}
-.ci .q{display:flex;align-items:center;border:1px solid #CFCFCF;border-radius:6px;margin-top:6px;width:max-content}
-.ci .q button{all:unset;cursor:pointer;width:26px;height:26px;display:grid;place-items:center}
-.ci .q em{font-style:normal;min-width:16px;text-align:center;font-size:13px}
-.ci>span{font:900 14px Montserrat;white-space:nowrap}
-.ct-k{font:800 10.5px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:var(--rd);margin:16px 0 8px}
-.ct-s{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
-.ct-s .xc{flex:0 0 118px;padding:8px}.ct-s .xc b{font-size:11px;min-height:28px}.ct-s .xc span{font-size:13px}.ct-s .xc button{height:30px;font-size:10.5px}
-.ct-f{border-top:1px solid var(--ln);padding:14px 18px 16px;box-shadow:0 -10px 24px -16px rgba(0,0,0,.3)}
-.ct-r{display:flex;justify-content:space-between;align-items:baseline}.ct-r span{font-size:14px;color:var(--mu)}.ct-r b{font:900 22px Montserrat}
-.ct-cu,.ct-dni{display:flex;gap:8px;align-items:center;font-size:13px;margin-top:6px}
-.ct-cu{color:var(--ok);font-weight:600}.ct-dni{color:#555}
-.ct-cu svg,.ct-dni svg{width:17px;height:17px;flex:none}
-.ct-cp{display:flex;gap:6px;margin-top:10px}
-.ct-cp input{flex:1;min-width:0;height:40px;border:1px solid #CFCFCF;border-radius:6px;padding:0 10px}
-.ct-cp button{all:unset;cursor:pointer;padding:0 12px;height:40px;line-height:40px;border-radius:6px;background:var(--gr);font:600 12.5px Inter}
-.ct-lg{display:flex;gap:4px;margin-top:10px}.ct-lg img{height:20px;border-radius:3px}
-.ct-seg{all:unset;cursor:pointer;display:block;text-align:center;width:100%;margin-top:8px;font:600 13px Inter;color:var(--ink);text-decoration:underline}
+.ct{position:absolute;top:0;right:0;bottom:0;width:min(430px,100%);background:#fff;display:flex;flex-direction:column;animation:sl .35s cubic-bezier(.2,.8,.2,1)}
+.ct-h{display:flex;justify-content:space-between;align-items:center;padding:16px 18px}
+.ct-h b{font:900 19px Montserrat;text-transform:uppercase;letter-spacing:-.01em}
+.ct-h .ov-x{background:none;font-size:18px}
+.ct-b{flex:1;overflow:auto;padding:0 18px 22px}
+.ct-sale{display:flex;gap:10px;align-items:center;background:#EAF6EE;border:1px solid #BFE3CB;border-radius:12px;padding:11px 13px;font-size:13.5px;color:#14532D}
+.ct-sale i{flex:none;width:26px;height:26px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center}.ct-sale i svg{width:14px;height:14px}
+.ct-sale b{color:var(--ok)}
+.ci{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--ln)}
+.ci img{width:72px;height:72px;object-fit:contain}
+.ci .tp{display:flex;justify-content:space-between;gap:10px}
+.ci b{font:500 13.5px/1.3 Inter;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ci .del{font-size:12.5px;color:#444;cursor:pointer;flex:none}
+.ci .bt2{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.ci .q{display:flex;align-items:center;border:1px solid #9A9A9A}
+.ci .q button{all:unset;cursor:pointer;width:32px;height:32px;display:grid;place-items:center;font-size:16px}
+.ci .q em{font-style:normal;min-width:26px;text-align:center;font-size:14px}
+.ci .bt2 span{font:600 14px Inter}
+.ct-hd{display:flex;justify-content:space-between;align-items:center;margin:20px 0 10px}
+.ct-hd span{font:800 12px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:#555}
+.ct-hd.sm span{font-size:11px}
+.ct-rv{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none}
+.ct-rv .rv1{flex:0 0 84%;border:1px solid var(--ln);border-radius:12px;padding:12px 14px}
+.rv1 .a{display:flex;align-items:center;gap:8px}
+.rv1 .a i{width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:700 12px Inter;font-style:normal}
+.rv1 .a b{font:700 13.5px Inter;display:block}.rv1 .a small{font-size:11.5px;color:#1E73BE;font-weight:600}
+.rv1 .a .st{margin-left:auto}.rv1 .a .st svg{width:12px;height:12px}
+.rv1 p{font-size:13px;line-height:1.45;margin-top:8px;color:#333}
+.ct-s{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none}
+.sg{flex:0 0 31%;min-width:118px}
+.sg .im{position:relative;aspect-ratio:1;background:var(--gr);border-radius:4px;padding:8px}
+.sg .im img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.sg .im button{all:unset;cursor:pointer;position:absolute;right:6px;bottom:6px;width:30px;height:30px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.2);display:grid;place-items:center;font-size:18px}
+.sg .im button.ok{background:var(--ok);color:#fff}
+.sg b{display:block;font:500 12px/1.3 Inter;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sg span{display:block;font:700 13px Inter;margin-top:2px}
+.sg small{display:block;font-size:11px;color:var(--ok);font-weight:600}
+.ct-cup{display:flex;align-items:center;gap:10px;padding:16px 0;margin-top:16px;border-bottom:1px solid var(--ln);font-size:14px}
+.ct-cup svg{width:18px;height:18px}.ct-cup span{margin-left:auto;font-size:18px;color:#555}
+.ct-r{display:flex;justify-content:space-between;align-items:baseline;padding-top:12px;font-size:14px}
+.ct-r b{font:600 14px Inter}
+.ct-r.big span{font:900 19px Montserrat}.ct-r.big b{font:900 19px Montserrat}
+.ct-o{text-align:right;font-size:13px;color:#444;margin-top:2px}
+.ct-pay{border:1.5px solid var(--ink);border-radius:12px;overflow:hidden;margin-top:10px}
+.ct-pay .t{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px}
+.ct-pay .t b{display:block;font:800 13.5px Montserrat;text-transform:uppercase}
+.ct-pay .t b i{font-style:normal;font-size:10px;background:var(--y);color:var(--ink);padding:2px 6px;border-radius:4px;margin-left:6px;vertical-align:2px}
+.ct-pay small{font-size:12px;color:var(--ok);font-weight:600}
+.ct-pay em{font:900 21px Montserrat;font-style:normal}
+.ct-pay .go{display:flex;justify-content:space-between;padding:11px 14px;border-top:1px solid var(--ln);font:800 12px Montserrat;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:inherit}
+.ct-pay.dk{background:var(--ink);color:#fff}.ct-pay.dk small{color:#CFCFCF}.ct-pay.dk .go{border-color:#333}
+.ct-lg{display:flex;gap:5px;justify-content:center;margin-top:14px}.ct-lg img{height:20px;border-radius:3px}
 @container (max-width:560px){
   .xm{padding:18px 16px;border-radius:16px}
   .xm-g{grid-template-columns:repeat(3,1fr);gap:6px}.xc{padding:6px}.xc b{font-size:10.5px}.xc span{font-size:12.5px}.xc button{font-size:10px;height:30px}
@@ -882,20 +909,22 @@ input,button{font:inherit;font-size:16px}
    <div class="xm-bt"><button class="xb o" data-close>Seguir comprando</button><button class="xb" data-cart>Ir al carrito</button></div>
   </div></div>
  <div class="ov" id="ovC" hidden><div class="ov-bg" data-close></div>
-  <aside class="ct"><div class="ct-h"><b>Tu carrito <span id="ctN"></span></b><button class="ov-x" data-close aria-label="Cerrar">✕</button></div>
+  <aside class="ct"><div class="ct-h"><b>Carrito de compras</b><button class="ov-x" data-close aria-label="Cerrar">✕</button></div>
    <div class="ct-b">
+    <div class="ct-sale"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></i><span>Comprando antes de las 17 h, <b>tu pedido sale hoy</b> de lunes a viernes</span></div>
     <div id="ctI"></div>
-    <div class="ct-k">Sumá a tu compra</div>
+    <div class="ct-hd"><span>Ya lo vivieron</span></div>
+    <div class="ct-rv" id="ctR"></div>
+    <div class="ct-hd"><span>Sumá a tu compra</span></div>
     <div class="ct-s" id="ctS"></div>
-   </div>
-   <div class="ct-f">
-    <div class="ct-r"><span>Subtotal</span><b id="ctT"></b></div>
-    <div class="ct-cu"><svg><use href="#card"/></svg><span>En <strong id="ctC"></strong></span></div>
-    <div class="ct-dni"><svg><use href="#id"/></svg>¿Sin tarjeta? Crédito personal con tu DNI</div>
-    <label class="ct-cp"><input type="text" inputmode="numeric" placeholder="Tu código postal"><button type="button">Calcular envío</button></label>
+    <div class="ct-cup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.4"/></svg>Cupón de descuento<span>+</span></div>
+    <div class="ct-r"><span>Subtotal (sin envío):</span><b id="ctSub"></b></div>
+    <div class="ct-r big"><span>Total:</span><b id="ctT"></b></div>
+    <div class="ct-o">O hasta 6 cuotas sin interés de <span id="ctC"></span></div>
+    <div class="ct-hd sm"><span>Iniciá pago con:</span></div>
+    <div class="ct-pay"><div class="t"><div><b>Pago con tarjeta</b><small id="ctCu"></small></div><em id="ctT2"></em></div><a class="go">Iniciar compra<span>→</span></a></div>
+    <div class="ct-pay dk"><div class="t"><div><b>Crédito personal <i>DNI</i></b><small>Solo con tu DNI, a sola firma</small></div></div><a class="go">Consultar por WhatsApp<span>→</span></a></div>
     <div class="ct-lg"><img src="mp1.png" alt=""><img src="mp2.png" alt=""><img src="mp0.png" alt=""><img src="mp3.png" alt=""><img src="mp4.png" alt=""></div>
-    <button class="xb full">Iniciar compra</button>
-    <button class="ct-seg" data-close>Seguir comprando</button>
    </div>
   </aside></div>
 </div>
@@ -1006,16 +1035,18 @@ function abrirOv(id){['ovX','ovC'].forEach(x=>$(x).hidden=x!==id);callar()}
 function cerrarOv(){$('ovX').hidden=$('ovC').hidden=true;document.querySelectorAll('.xseg button').forEach(b=>b.classList.remove('on'))}
 function agregar(i,show){const it=CART.find(c=>c.i===i);if(it)it.q++;else CART.push({i,q:1});pintar();
   if(show){const p=P[i];$('xmP').innerHTML=`<img src="${p[0]}.jpg" alt=""><div><b>${p[1]}</b><span>$ ${p[2]}</span><small>6 cuotas sin interés de $ ${p[5]}</small></div>`;$('xmG').innerHTML=compl(i).slice(0,3).map(mini).join('');abrirOv('ovX')}}
-function pintar(){let t=0,n=0;$('ctI').innerHTML=CART.map(c=>{const p=P[c.i];t+=num(p[2])*c.q;n+=c.q;return `<div class="ci"><img src="${p[0]}.jpg" alt=""><div><b>${p[1]}</b><small>6 x $ ${p[5]} sin interés</small><div class="q"><button type="button" data-cq="${c.i}" data-dq="-1">−</button><em>${c.q}</em><button type="button" data-cq="${c.i}" data-dq="1">+</button></div></div><span>${fmt(num(p[2])*c.q)}</span></div>`}).join('');
-  $('ctN').textContent='('+n+')';$('ctT').textContent=fmt(t);$('ctC').textContent='6 cuotas sin interés de '+fmt(t/6);
-  const ya=CART.map(c=>c.i);$('ctS').innerHTML=[...new Set([...CART.flatMap(c=>compl(c.i)),28,46,42])].filter(k=>!ya.includes(k)).slice(0,5).map(mini).join('');
+function pintar(){let t=0,n=0;$('ctI').innerHTML=CART.map(c=>{const p=P[c.i];t+=num(p[2])*c.q;n+=c.q;return `<div class="ci"><img src="${p[0]}.jpg" alt=""><div><div class="tp"><b>${p[1]}</b><span class="del" data-del="${c.i}">Borrar</span></div><div class="bt2"><div class="q"><button type="button" data-cq="${c.i}" data-dq="-1">−</button><em>${c.q}</em><button type="button" data-cq="${c.i}" data-dq="1">+</button></div><span>${fmt(num(p[2])*c.q)},00</span></div></div></div>`}).join('');
+  $('ctSub').textContent=fmt(t)+',00';$('ctT').textContent=fmt(t);$('ctT2').textContent=fmt(t);$('ctC').textContent=fmt(t/6);$('ctCu').textContent='6 cuotas sin interés de '+fmt(t/6);
+  const ya=CART.map(c=>c.i);$('ctS').innerHTML=[...new Set([...CART.flatMap(c=>compl(c.i)),28,46,42])].filter(k=>!ya.includes(k)).slice(0,5).map(k=>`<div class="sg"><div class="im"><img src="${P[k][0]}.jpg" alt=""><button type="button" data-add="${k}">+</button></div><b>${P[k][1]}</b><span>$ ${P[k][2]}</span><small>6 x $ ${P[k][5]}</small></div>`).join('');
+  $('ctR').innerHTML=R.slice(0,4).map(x=>`<div class="rv1"><div class="a"><i>${x[0]}</i><div><b>${x[2]}</b><small>✓ Compra verificada</small></div><span class="st">${star.repeat(5)}</span></div><p>${x[4]}</p></div>`).join('');
   document.querySelector('.cart b').textContent=n}
 function verCarrito(){if(!CART.length){agregar(13,false);agregar(16,false)}abrirOv('ovC')}
 function verDesc(){vista('ficha',13);setTimeout(()=>{const d=$('dsc');$('screen').scrollTo({top:d.offsetTop-170,behavior:'smooth'})},120)}
 document.addEventListener('click',e=>{
   if(e.target.closest('.tn-add')){e.preventDefault();agregar(FX,true);return}
   if(e.target.closest('.dsc-btn')){e.preventDefault();agregar(13,true);return}
-  const a=e.target.closest('[data-add]');if(a){a.classList.add('ok');a.textContent='✓ Agregado';agregar(+a.dataset.add,false);return}
+  const a=e.target.closest('[data-add]');if(a){const inCart=!!a.closest('.sg');a.classList.add('ok');a.textContent=inCart?'✓':'✓ Agregado';agregar(+a.dataset.add,false);return}
+  const dl=e.target.closest('[data-del]');if(dl){CART=CART.filter(x=>x.i!==+dl.dataset.del);pintar();return}
   const q=e.target.closest('[data-cq]');if(q){const c=CART.find(x=>x.i===+q.dataset.cq);c.q+= +q.dataset.dq;if(c.q<1)CART=CART.filter(x=>x!==c);pintar();return}
   if(e.target.closest('[data-cart]')){abrirOv('ovC');return}
   if(e.target.closest('[data-close]')){cerrarOv();return}
