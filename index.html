@@ -116,25 +116,38 @@ input,button{font:inherit;font-size:16px}
 .cat img{width:62%;height:62%;object-fit:contain;mix-blend-mode:multiply}
 .cat b{font:700 13.5px/1.25 Montserrat}
 /* productos */
-.rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 4*16px)/5);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3*16px)/4);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
 .rail::-webkit-scrollbar{display:none}
 .rail>*{scroll-snap-align:start}
 .rw{position:relative}
 .ra{position:absolute;top:34%;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--ln);display:grid;place-items:center;cursor:pointer;z-index:2;box-shadow:0 6px 16px -8px rgba(0,0,0,.3)}
 .ra svg{width:18px;height:18px}
 .ra.l{left:-20px}.ra.r{right:-20px}
-.card{text-decoration:none;color:var(--ink);display:flex;flex-direction:column;background:#fff;border:1px solid var(--ln);border-radius:16px;overflow:hidden}
+.card{text-decoration:none;color:var(--ink);display:flex;flex-direction:column;background:#fff;border:1px solid var(--ln);border-radius:4px;overflow:hidden;height:100%}
 .card .ph{position:relative;aspect-ratio:1;background:#fff;padding:14px}
 .card .ph img{width:100%;height:100%;object-fit:contain;display:block}
-.tag{position:absolute;top:12px;left:12px;z-index:2;background:var(--rd);color:#fff;font:800 11px Montserrat;padding:5px 9px;border-radius:7px}
-.tag.y{background:var(--y);color:var(--ink)}
-.card .bd{padding:4px 16px 16px;display:flex;flex-direction:column;flex:1;border-top:1px solid var(--gr)}
-.card h3{font:600 13.5px/1.35 Inter;margin-top:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:36px}
-.pr{margin-top:auto;padding-top:10px}
-.pr s{font-size:12.5px;color:#9A9A9A;display:block;min-height:17px}
-.pr b{font:900 21px Montserrat;letter-spacing:-.02em}
-.cu{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:12.5px;color:var(--ok);font-weight:600}
-.cu svg{width:15px;height:15px;flex:none}
+.card .bd{padding:6px 14px 14px;display:flex;flex-direction:column;flex:1}
+.tags{display:flex;gap:8px;justify-content:center;min-height:22px}
+.tg{font:800 10.5px Montserrat;letter-spacing:.04em;color:var(--rd);border:1.5px solid var(--rd);padding:3px 7px;border-radius:2px;text-transform:uppercase;line-height:1.2}
+.card h3{font:800 14px/1.3 Montserrat;text-transform:uppercase;margin-top:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:36px;letter-spacing:.01em}
+.bxs{display:grid;gap:8px;margin-top:auto;padding-top:12px}
+.bx{display:grid;grid-template-columns:22px 1fr;column-gap:10px;align-items:center;padding:8px 10px;border:1px solid #DADADA;background:#F7F7F7;border-radius:2px}
+.bx>i{grid-row:1/3;color:#9A9A9A;display:grid;place-items:center}.bx>i svg{width:20px;height:20px}
+.bx small{font:500 10.5px Inter;letter-spacing:.04em;text-transform:uppercase;color:#777;display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+.bx small s{text-transform:none;letter-spacing:0;color:#9A9A9A}
+.bx b{font:800 17px/1.2 Montserrat;letter-spacing:-.01em}
+.bx.c{border-color:#1E73BE;background:#F0F7FE}
+.bx.c>i{color:#1E73BE}
+.bx.c small{flex-wrap:nowrap;white-space:nowrap}
+.bx.c small em{font-style:normal;font-weight:700;color:var(--ink)}
+.bx.c b{color:#0B4A7A}
+.lg{grid-column:1/-1;display:flex;gap:5px;overflow:hidden;align-items:center;border-top:1px solid #CFE2F5;margin-top:8px;padding-top:7px}
+.lg span{font:800 9px Inter;padding:2px 4px;border-radius:2px;line-height:1.1}
+.lg .v{color:#1A1F71;font-style:italic;font-size:10.5px;padding:0}
+.lg .n{background:#FF2E63;color:#fff}.lg .s{background:#F39200;color:#fff}.lg .k{background:#E30613;color:#fff}
+.lg svg{width:22px;height:14px}
+.vm{align-self:flex-end;display:inline-flex;align-items:center;gap:6px;margin-top:12px;background:var(--ink);color:#fff;font:800 11.5px Montserrat;letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;border-radius:2px}
+.vm svg{width:14px;height:14px}
 /* destacado + ofertas */
 .of{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start}
 .tabs{display:flex;gap:8px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
@@ -289,11 +302,12 @@ input,button{font:inherit;font-size:16px}
 .fx-cu strong{color:var(--ok)}
 .fx-cu a{margin-left:auto;font-size:12.5px;color:var(--ink);font-weight:600}
 .fx-buy{display:flex;gap:10px;margin-top:20px}
-.fx-buy .btn{flex:1;height:58px}
-.qty{display:flex;align-items:center;border:1.5px solid #D6D6D6;border-radius:999px}
-.qty button{all:unset;cursor:pointer;width:44px;height:54px;display:grid;place-items:center;font-size:18px}
+.tn-add{flex:1;height:50px;border:0;border-radius:6px;background:var(--rd);color:#fff;font:600 16px Inter;cursor:pointer;-webkit-appearance:none}
+.tn-add:hover{filter:brightness(.94)}
+.qty{display:flex;align-items:center;border:1px solid #CFCFCF;border-radius:6px}
+.qty button{all:unset;cursor:pointer;width:40px;height:48px;display:grid;place-items:center;font-size:18px}
 .qty b{min-width:22px;text-align:center;font-weight:600}
-.fx-wa{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:13.5px;color:var(--ink);font-weight:500;text-decoration:none}
+.fx-wa{display:flex;gap:10px;align-items:center;margin-top:12px;padding:12px 14px;border:1px solid #CDEBD6;background:#F2FAF4;border-radius:6px;font-size:13.5px;color:var(--ink);font-weight:500;text-decoration:none}
 .fx-wa svg{width:18px;height:18px;flex:none;color:#1DA851}
 .ent{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
 .ent div{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--ln);padding:14px;border-radius:14px}
@@ -362,18 +376,21 @@ input,button{font:inherit;font-size:16px}
   .cat{gap:7px}.cat b{font-size:11px}
   .rail{grid-auto-columns:46%;gap:10px}
   .ra{display:none}
-  .card{border-radius:12px}
   .card .ph{padding:8px}
-  .card .bd{padding:2px 10px 12px}
-  .card h3{font-size:12px;min-height:32px;margin-top:9px}
-  .pr s{font-size:11px;min-height:15px}.pr b{font-size:17px}
-  .cu{font-size:11px;gap:4px}.cu svg{width:13px;height:13px}
-  .tag{top:8px;left:8px;font-size:10px;padding:4px 7px}
+  .card .bd{padding:4px 8px 10px}
+  .tags{min-height:20px}.tg{font-size:9px;padding:2px 5px}
+  .card h3{font-size:11.5px;min-height:30px;margin-top:8px}
+  .bxs{gap:6px;padding-top:10px}
+  .bx{grid-template-columns:16px 1fr;column-gap:6px;padding:6px 7px}
+  .bx>i svg{width:15px;height:15px}
+  .bx small{font-size:8.5px;gap:4px}.bx b{font-size:14px}
+  .lg{display:none}
+  .vm{align-self:stretch;justify-content:center;font-size:10.5px;padding:9px 8px;margin-top:10px}
   .of{grid-template-columns:minmax(0,1fr)}.of>*{min-width:0}
   .tabs{margin:0 -16px 12px;padding:0 16px}.tabs button{height:36px;padding:0 14px;font-size:12px}
   .hot{padding:16px;border-radius:16px}
   .hot .card{display:grid;grid-template-columns:42% 1fr}
-  .hot .card .bd{border-top:0;border-left:1px solid var(--gr)}
+  .hot .card .bd{border-left:1px solid var(--gr)}
   .hot h3{font-size:22px}
   /* por qué: texto y video lado a lado */
   .why-in{display:block}
@@ -431,11 +448,7 @@ input,button{font:inherit;font-size:16px}
   .fx-info h1{font-size:21px}
   .ep-1 .ep-n{font-size:38px}.ep-2 .ep-n{font-size:26px}.ep-n3{font-size:15px}.ep-paso{padding:12px 16px}.ep-top{padding:14px 16px 0}.ep-sello{padding:10px 16px}.ep-sello small{margin-left:0;flex:0 0 100%}
   .ent{grid-template-columns:1fr 1fr}.ent div{flex-direction:column;gap:8px;padding:12px}
-  .fx-buy{display:none}
-  .fx-bar{display:flex;position:sticky;bottom:0;z-index:7;align-items:center;justify-content:space-between;gap:12px;background:#fff;border-top:1px solid var(--ln);padding:10px 16px;box-shadow:0 -8px 24px -12px rgba(0,0,0,.25)}
-  .fx-bar small{display:block;font-size:11px;color:var(--ok);font-weight:600}
-  .fx-bar b{font:900 18px Montserrat}
-  .fx-bar .btn{height:48px;padding:0 22px;font-size:12px}
+
 }
 </style>
 </head>
@@ -655,7 +668,7 @@ input,button{font:inherit;font-size:16px}
         </div>
         <div class="fx-buy">
           <div class="qty"><button type="button" data-q="-1">−</button><b>1</b><button type="button" data-q="1">+</button></div>
-          <a class="btn" href="#ficha">Agregar al carrito</a>
+          <input type="submit" class="tn-add" value="Agregar al carrito">
         </div>
         <a class="fx-wa" href="#ficha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.4A9 9 0 1 1 21 12z"/></svg>¿Tenés dudas? Te asesora un especialista por WhatsApp</a>
         <div class="ent">
@@ -674,7 +687,6 @@ input,button{font:inherit;font-size:16px}
     <div class="head" style="margin-top:70px"><div><div class="kick">Te puede interesar</div><div class="h2">Más <em>ofertas</em></div></div></div>
     <div class="rail" id="g4" style="margin-bottom:20px"></div>
   </div>
-  <div class="fx-bar"><div><small id="fxBarC">6 cuotas sin interés</small><b id="fxBarP">$ 000.000</b></div><a class="btn" href="#ficha">Agregar</a></div>
   </main>
 
   <!-- Medios de pago: cinta que corre sola -->
@@ -705,7 +717,8 @@ const $=id=>document.getElementById(id);
 const P=[["p00", "Lavarropas Automatico Drean 5.5Kg 700Rpm Cs Gris Oscuro", "558.154", "", "", "93.026"], ["p01", "Pileta De Lona Pelopincho 1055 3.00 X 2.00 X 0.75", "275.649", "306.276", "10", "45.942"], ["p02", "Pileta De Lona Pelopincho 1102 3.05 X 0.75", "298.073", "331.192", "10", "49.679"], ["p03", "Pileta Pelopincho 1076 4.45 X 2.25 X 0.80", "453.531", "503.923", "10", "75.589"], ["p04", "Pileta De Lona Pelopincho 1043 2,70X1,60X0,65", "210.534", "233.926", "10", "35.089"], ["p05", "Turbo Circulador Liliana Votr18", "152.599", "", "", "25.433"], ["p06", "Pileta Pelopincho 1020", "101.180", "112.422", "10", "16.863"], ["p07", "Turbo Circulador Liliana 16\" 5 Palas 3 Velocidades Vtf16P", "81.749", "", "", "13.625"], ["p08", "Turbo Circulador Liliana 20\" 3 Palas 3 Velocidades Vtfm20", "185.299", "", "", "30.883"], ["p09", "Notebook Exo 14.1\"/N4020C/4Bg/Ssd128Gb/ Exo Smart Xr2", "407.899", "420.012", "3", "67.983"], ["p10", "Aire Acondicionado Vent. Fedders 3600W Fs 3000Frig", "853.470", "", "", "142.245"], ["p11", "Bordeadora Tramontina 1500W", "103.932", "", "", "17.322"], ["p12", "NOTEBOOK EXO RYZEN 3 3200U /15.6\"/ 8GB/SSD 480GB/ Windows 11", "1.057.517", "", "", "176.253"], ["p13", "AIRE ACOND, SPLIT HITACHI 2700W / 2322 FRIG. On/Off", "729.853", "", "", "121.642"], ["p14", "Aire Acondicionado Split RCA 3350w F/C A Rl3350fc", "773.681", "", "", "128.947"], ["p15", "VENTILADOR DE PIE CRIVEL 30' Metálico Mod.V39", "247.096", "", "", "41.183"], ["p16", "Ventilador De Mesa Liliana 16\" 5 Aspas 3 Velocidades Vsop16", "98.099", "", "", "16.350"], ["p17", "Turbo Circular Liliana 14\" 3 Palas 3 Velocidades Vtfm14", "130.799", "", "", "21.800"], ["p18", "Vent. De Pared Magiclick 20´ 3V 90W Oscilante", "79.054", "", "", "13.176"], ["p19", "Tv Led Noblex 24 Db24X4000", "194.238", "", "", "32.373"], ["p20", "Tv Led Samsung 85 Qn85Q70Aagczb Qled 4K", "3.999.998", "4.249.999", "6", "666.666"], ["p21", "Tv Led Philips 32Phd6910 Hd32Phd6910/77", "382.590", "", "", "63.765"], ["p22", "TV LED NOBLEX 50\" 4K GOOGLE TVDV50x8580", "782.838", "", "", "130.473"], ["p23", "Tv Led Philco 55\" 91Pld55Us55Us25Gh Android Tv", "884.372", "", "", "147.395"], ["p24", "TV LED TCL 32\" 32s5k QLED FHD GOOGLE TV", "396.246", "", "", "66.041"], ["p25", "Tv Led Smart Rca 32\" Google Tv Hd R32Gl100", "375.231", "", "", "62.539"], ["p26", "Microfono Ross Fv-302Inalambrico De Mano", "69.078", "", "", "11.513"], ["p27", "Parlante Bafle Stromberg Dj4004 Bluetooth Tws De 120w", "468.435", "", "", "78.073"], ["p28", "Auricular Global Epbl037 Negro", "26.324", "", "", "4.387"], ["p29", "Parlante Portatil Noblex Psb2000P 60W", "200.697", "208.253", "4", "33.450"], ["p30", "Soporte Para Microfono Samson Mk10Mk10", "70.051", "", "", "11.675"], ["p31", "Bafle Potenciado Rca Joy 215 1600W 24042", "654.816", "", "", "109.136"], ["p32", "Bafle Potenciado Lg Rnc5 Xboom 500W", "779.350", "874.500", "11", "129.892"], ["p33", "Microfono Dinamico Ross Fm-A3 Cable Canon-Canon Color Cromado", "32.529", "", "", "5.422"], ["p34", "Bafle Potenciado Rca Joy 28 8000W 24041", "419.376", "", "", "69.896"], ["p35", "Pack Ross Mixer Potenciado + 2 Bafles + Cable P/Baflepack Dx-8", "1.310.522", "", "", "218.420"], ["p36", "Bafle Potenciado Kioto Tw4000 300W Rms", "671.188", "", "", "111.865"], ["p37", "Bafle Potenciado Kioto Tw2200 120W Rms", "469.745", "", "", "78.291"], ["p38", "Cafetera Express Ultracomb CE 6108 15 Bar", "168.333", "201.999", "17", "28.056"], ["p39", "Exprimidor De Jugo Philips HR-2738 Blanco", "66.804", "", "", "11.134"], ["p40", "Licuadora Moulinex LM2701AR Optimix Plus 2 Litros, 550 W", "79.263", "79.990", "1", "13.211"], ["p41", "Sandwichera Moulinex SM-154180", "49.535", "49.990", "1", "8.256"], ["p42", "Sandwichera Ultracomb SW-2800", "34.415", "36.799", "6", "5.736"], ["p43", "Exprimidor De Jugo Yelmo EX-1303", "29.926", "31.999", "6", "4.988"], ["p44", "Parrilla Grill Atma Pg4720 D/Tapa", "107.296", "", "", "17.883"], ["p45", "PICADORA MOULINEX AD6021 C/LICUADORA 750w", "148.725", "150.090", "1", "24.788"], ["p46", "Balanza Para Cocina Aspen 3417 Kci", "29.628", "", "", "4.938"], ["p47", "Tostadora Yelmo To 3007 1000W", "66.465", "", "", "11.078"], ["p48", "Balanza Para Cocina Yelmo Bl-7001 Digital", "22.510", "24.899", "10", "3.752"], ["p49", "Exprimidor Moulinex Pc3021Ar Vitapress", "42.599", "42.990", "1", "7.100"]];
 P.forEach((p,i)=>p.push(i));
 const ok='<svg><use href="#card"/></svg>';
-const card=(p,k)=>`<a class="card" href="#producto" data-p="${p[6]}"><div class="ph"><img src="${p[0]}.jpg" alt="">${p[4]?`<span class="tag">${p[4]}% OFF</span>`:''}</div><div class="bd"><h3>${p[1]}</h3><div class="pr"><s>${p[3]?'$ '+p[3]:''}</s><b>$ ${p[2]}</b><span class="cu">${ok}6 x $ ${p[5]} sin interés</span></div></div></a>`;
+const LG='<div class="lg"><span class="v">VISA</span><svg viewBox="0 0 22 14"><circle cx="8" cy="7" r="6" fill="#EB001B"/><circle cx="14" cy="7" r="6" fill="#F79E1B" fill-opacity=".9"/></svg><span class="n">NX</span><span class="s">SOL</span><span class="k">SuCrédito</span></div>';
+const card=(p,k)=>`<a class="card" href="#producto" data-p="${p[6]}"><div class="ph"><img src="${p[0]}.jpg" alt=""></div><div class="bd"><div class="tags">${p[4]?`<span class="tg">${p[4]}% OFF</span>`:''}</div><h3>${p[1]}</h3><div class="bxs"><div class="bx"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 14h3"/></svg></i><small>${p[3]?'Precio de lista <s>$ '+p[3]+'</s>':'Precio online'}</small><b>$ ${p[2]}</b></div><div class="bx c"><i><svg><use href="#card"/></svg></i><small><em>6</em> cuotas sin interés</small><b>$ ${p[5]}</b>${LG}</div></div><span class="vm">Ver más<svg><use href="#ar"/></svg></span></div></a>`;
 // categorías
 const C=[['cat4','Climatización'],['cat2','Heladeras'],['cat0','Celulares'],['cat5','Televisores'],['cat6','Cocinas'],['cat7','Colchones y sommiers'],['cat3','Herramientas'],['cat1','Jardín']];
 $('gC').innerHTML=C.map((c,i)=>`<a class="cat rv" style="--i:${i%8}" href="#cb"><div><img src="${c[0]}.jpg" alt=""></div><b>${c[1]}</b></a>`).join('');
@@ -772,8 +785,8 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)callar()});
 function abrir(i){const p=P[i]||P[0];
   $('fxName').textContent=$('fxName2').textContent=p[1];$('fxImg').src=p[0]+'.jpg';
   $('fxOld').textContent=p[3]?'$ '+p[3]:'';$('fxOff').textContent=p[4]?p[4]+'% OFF':'';
-  $('fxPr').textContent='$ '+p[2];$('fxBarP').textContent='$ '+p[2];
-  $('fxCuV').textContent='$ '+p[5]+' por mes';$('fxCu').textContent='En 6 cuotas sin interés con todas las tarjetas';$('fxBarC').textContent=`6 x $ ${p[5]} sin interés`;}
+  $('fxPr').textContent='$ '+p[2];
+  $('fxCuV').textContent='$ '+p[5]+' por mes';$('fxCu').textContent='En 6 cuotas sin interés con todas las tarjetas';}
 function vista(v,i){const f=v==='ficha';$('home').hidden=f;$('ficha').hidden=!f;if(f)callar();
   document.querySelectorAll('.seg.pg button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
   if(f)abrir(i??9);
